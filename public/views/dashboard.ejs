@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="<%= language.language %>">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon">
+
+    <title><%= language.work_sapce_text %></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/materialize.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../dist/css/roboto.ttf">
+    <link href="../css/carousel.css?2" rel="stylesheet">
+    <link href="../dist/css/ripples.min.css" rel="stylesheet">
+    <link href="../dist/css/pagination.css" rel="stylesheet">
+    <link href="../dist/css/iconfont/material-icons.css" rel="stylesheet">
+    <link href="../css/dashboard.css?1314" rel="stylesheet">
+    <link href="../dist/css/style.css" rel="stylesheet">
+    <link href="../css/index4.css?121" rel="stylesheet">
+    <link href="../dist/css/cropper.css?1" rel="stylesheet">
+
+    <style>
+      .label {
+        cursor: pointer;
+      }
+
+      .progress {
+        display: none;
+        margin-bottom: 1rem;
+      }
+
+      .alert {
+        display: none;
+      }
+
+      .img-container img {
+        max-width: 100%;
+      }
+      .modal.modal-fixed-footer {
+        padding: 0;
+        height: auto !important;
+        max-height: 95% !important;
+      }
+    </style>
+  </head>
+
+  <body>
+
+  <nav class="white navbar-fixed-top" role="navigation" id="header_header">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="<%= link.home_link %>" class="brand-logo"><img style="float:left;margin-top:6px;" src="/brand"  width="50" height="50"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="nav-link" tag="link" href="<%= link.dashboard_link_home_link %>"><i class='material-icons left' style='margin-top:-3px;color:#000;'>link</i><%= language.top_bar_link %></a></li>
+        <li><a class="nav-link" tag="forum" href="<%= link.dashboard_forum_home_link %>"><i class='material-icons left' style='margin-top:-3px;color:#000;'>forum</i><%= language.top_bar_forum %></a></li>
+        <li><a class="nav-link" tag="invitation" href="#"><i class='material-icons left' style='margin-top:-3px;color:#000;'>mail</i><%= language.invitation_text %><span class="notification-counters" id="big_not">0</span></a></li>
+        <li><a class="nav-link" tag="project" href="<%= link.project_home_link %>"><i class='material-icons left' style='margin-top:-3px;color:#000;'>folder_open</i><%= language.top_bar_projects %></a></li>
+        <li><a class="nav-link" tag="info" href="#"><i class='material-icons left' style='margin-top:-3px;color:#000;'>info</i><%= language.notification %> <span class="notification-offline" id="big_inv">0</span></a></li>
+           <!-- <li><a href="<%= link.sport %>" class="nav-link">Sport</a></li>
+            <li><a href="<%= link.enquete %>" class="nav-link">Enquête</a></li>
+            <li><a href="<%= link.analyse %>" class="nav-link">Analyse</a></li> -->
+        <li><a href="#" tag="show_profile" class="nav-link" rel="nofollow"><img style="float:left;margin-top:18px;margin-right:2px;border-radius:50%;border-style: solid; border-width: 1px; border-color: white;" src="/profil" width="25" height="25" id="sm_pic"><%= user.prenom %> <%= user.nom %></a></li>
+
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="<%= link.news %>" class="nav-link">Actualité</a></li>
+        <li><a href="<%= link.politic %>" class="nav-link">Politique</a></li>
+        <li><a href="<%= link.security %>" class="nav-link">Sécurité</a></li>
+        <li><a href="<%= link.economy %>" class="nav-link">Economie</a></li>
+        <li><a href="<%= link.sante %>" class="nav-link">Santé</a></li>
+        <li><a class="nav-link" href="<%= link.culture %>">Culture</a></li>
+        <li><a class="nav-link" href="<%= link.environnement %>">Environnement</a></li>
+        <li><a class="nav-link" href="<%= link.society %>">Société</a></li>
+        <li><a href="<%= link.sport %>" class="nav-link">Sport</a></li>
+        <li><a href="<%= link.enquete %>" class="nav-link">Enquête</a></li>
+        <li><a href="<%= link.analyse %>" class="nav-link">Analyse</a></li>
+        <li><a href="#" class="nav-link" id="searching_button_mobile">Recherche</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+<!--<nav class="navbar navbar-dark navbar-fixed-top bg-inverse" style="color:#543b79 !important;background-color:#FFFFFF !important;display:none;" id="searching_nav">
+      <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div id="navbar">
+        <input class="form-control" id="searching_input_value" type="text" placeholder="<%= language.top_bar_search %>">
+      </div>
+    </nav>
+
+    <nav class="navbar navbar-dark navbar-fixed-top bg-inverse" style="background-color:#FFFFFF;" id="main_nav">
+      <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= link.home_link %>"><img style="float:left;margin-top:6px;" src="/brand" width="25" height="20"> <i>TOSALA</i></a>
+      <div id="navbar">
+        <nav class="nav navbar-nav pull-xs-left" id="header-link">
+          <a class="nav-item nav-link" tag="home" href="<%= link.home_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>home</i><%= language.home%></a>
+          <a class="nav-item nav-link" tag="link" href="<%= link.dashboard_link_home_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>link</i><%= language.top_bar_link %></a>
+          <a class="nav-item nav-link" tag="forum" href="<%= link.dashboard_forum_home_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>forum</i><%= language.top_bar_forum %></a>
+          <a class="nav-item nav-link" tag="invitation" href="#"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>mail</i><%= language.invitation_text %><span class="notification-counters" id="big_not">0</span></a>
+          <a class="nav-item nav-link" tag="project" href="#"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>folder_open</i><%= language.top_bar_projects %></a>
+          <a class="nav-item nav-link" tag="info" href="#"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>info</i><%= language.notification %> <span class="notification-offline" id="big_inv">0</span></a>
+        </nav>
+        <form class="pull-xs-right">
+          <a style="font-size:22px;" href="#" id="pop" data-html="true" class="header-color" data-toggle="popover" data-content="<a href='/<%= link.log_out_link %>' id='log_out' class='btn btn-primary btn-sm pull-xs-right' style='margin-top:2px;background-color:#0066FF;color:white;'>
+      <i class='material-icons'>exit_to_app</i> <%= language.log_out %>
+    </a>" title="<h4 style='color:black;'><a href='#' class='btn btn-default btn-fab btn-fab-mini' style='background-color:white;''><i class='material-icons' style='color:#0066FF;'>account_box</i></a> <%= user.prenom %> <%= user.nom %></h4>">
+            <img style="float:left;margin-top:4px;margin-right:2px;border-radius:50%;border-style: solid; border-width: 1px; border-color: white;" src="/profil" width="25" height="25" id="sm_pic"> <font style="margin-bottom:5px;"> <%= user.prenom %> <%= user.nom %></font>
+          </a>
+        </form>
+        <input type="text" id="searchingInput" class="form-control-sm" placeholder="<%= language.top_bar_search %>" size="20" style="margin-left:2px;width:20%;">
+      </div>
+    </nav> -->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" id="rep_dir" style="padding: 0px !important;">
+          <h4 style="padding: 20px !important;background-color: #EEE !important; color: #000 !important;">
+          <%= language.group_mention %>
+          <button id="user_profil_block" type="button" class="btn btn-floating btn-sm waves-effect waves-light teal modal-trigger" data-toggle="modal" data-target="group-dialog">
+            <i class='material-icons' style='color:rgba(255, 255, 255, 0.5);'>group_work</i>
+          </button>
+          </h4>
+          <div align="center">
+            <img src="/images/indicator.gif" id="loading_icon_gif" style="display: none;">
+          </div>
+          <div style="padding: 20px !important;">
+            <ul class="nav nav-sidebar" id="group_list"></ul>
+          </div>
+            <div id="not_group_bloc" style="display: none;">
+              <div class="alert alert-dismissible alert-warning">
+                <p id="writeHtml"></p>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-2 sidebar" id="notif_dir" style="display:none;padding: 0px !important;">
+          <h3 style="padding: 20px !important;background-color: #EEE !important; color: #000 !important;">
+          <%= language.invitation_text %>
+          </h3>
+          <div align="center">
+            <img src="/images/indicator.gif" id="loading_icon_gif_notif" style="display: none;">
+          </div>
+          <div style="padding: 20px !important;">
+            <ul class="nav nav-sidebar" id="notif_list"></ul>
+          </div>
+            <div id="not_notif_bloc" style="display: none;">
+              <div class="alert alert-dismissible alert-warning">
+                <p id="writeHtmlNotif"></p>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-2 sidebar" id="notification_dir" style="display:none;padding: 0px !important;">
+          <h3 style="padding: 20px !important;background-color: #EEE !important; color: #000 !important;">
+          <%= language.notification %>
+          </h3>
+          <div align="center">
+            <img src="/images/indicator.gif" id="loading_icon_gif_notification" style="display: none;">
+          </div>
+          <div style="padding: 20px !important;">
+            <ul class="nav nav-sidebar" id="notification_list"></ul>
+          </div>
+            <div id="not_notification_bloc" style="display: none;">
+              <div class="alert alert-dismissible alert-warning">
+                <p id="writeHtmlNotification"></p>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
+        <div id="restart_warning" class="alert alert-dismissible alert-warning" style="display:none;"></div>
+          <h1 id="file_title"><%= language.welcome_msg %></h1>
+        <button id="back_to_home_btn" type="button" class="btn btn-floating btn-sm waves-effect waves-light teal" style='display: none;'>
+          <i class='material-icons' style='color:rgba(255, 255, 255, 0.5);'>arrow_back</i>
+        </button><span id="user_email_socket"><%= user.email %></span>
+
+        <hr class="featurette-divider">
+          <!--<div class="progress progress-striped">
+            <div class="progress-bar progress-bar-info loading" id="chargement" style="width:50%">Chargement en cours...</div>
+          </div>
+          <div class="progress progress-striped">
+            <div class="progress-bar progress-bar-striped loading" role="progressbar"
+            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+              Chargement en cours...
+            </div>
+          </div>
+           <a href="#" class="list-group-item list-group-item-info">Test</a>-->
+           <div class="panel panel-default" id="summary_presentation" style="padding: 5px;">
+            <div class="cardview_custom" style="padding: 5px;">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="remember_me" checked="true"> <%= language.only_domain %>
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="remember_me"> <%= language.only_domain %>
+                </label>
+              </div>
+              <hr class="featurette-divider" id="rem">
+              <div class="row">
+                <div class="col-lg-8" style="border-right: 1px solid #dadada;">
+                  <div align="left" id="latest_articles_id">
+                    <h1 class="panel-title"  style="padding-left: 2px;padding-top: 2px;"><%= language.loading_text %></h1>
+                    <h3 class="panel-title project_public_name" style="margin-left:10px;padding-left: 2px;padding-top: 2px;"><%= language.loading_text %></h3>
+                    <p style="margin-left:20px;" id="add_text_more"><%= language.loading_text %></p>
+                    <!--<p align="right"><a class="btn btn-secondary" href="#" role="button">Lire la suite &raquo;</a></p> -->
+
+                    <p><%= language.loading_text %></p>
+                    
+                    <hr class="featurette-divider">
+                    <h1 class="panel-title"  style="padding-left: 2px;padding-top: 2px;"><%= language.loading_text %></h1>
+                    <h3 class="panel-title project_public_name" style="margin-left:10px;padding-left: 2px;padding-top: 2px;"><%= language.loading_text %></h3>
+                    <p style="margin-left:20px;" id="add_text_mores"><%= language.loading_text %></p>
+
+                    <p><%= language.loading_text %></p>
+                    
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                <p><%= language.loading_text %></p>
+                    
+                    <hr class="featurette-divider">
+                    <h1 class="panel-title"  style="padding-left: 2px;padding-top: 2px;"><%= language.loading_text %></h1>
+                    <h3 class="panel-title project_public_name" style="margin-left:10px;padding-left: 2px;padding-top: 2px;"><%= language.loading_text %></h3>
+                    <p style="margin-left:20px;" id="add_text_mores"><%= language.loading_text %></p>
+
+                    <p><%= language.loading_text %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default" id="project_summary_view" style="padding: 5px; display: none;">
+            <div class="cardview_custom">
+              <button type="button" class="btn btn-raised btn-danger" id="deleteProject" style="color:white;float:right;"><%= language.delete_text_button %></button>
+              <button id="sync_project_files" type="button" class="btn btn-primary btn-sm" style="float:right;">
+                <i class='material-icons' style='color:rgba(255, 255, 255, 0.5);'>sync</i>
+              </button>
+              <h1 class="panel-title" style="padding-left: 2px;padding-top: 2px;"><i class="material-icons" style="margin-top: -5px;color:#543b79;">folder</i> <%= language.your_current_project %></h1>
+              <div class="row">
+                <div class="col-lg-2">
+                  <img class="img-circle" id="group_icon" src="/brand" alt="Generic placeholder image" width="140" height="140">
+                  <input type="file" id="inputFile5" accept="image/*" style="display: none;">
+                  <button id="edit_pro_ico_btn" type="button" class="btn btn-floating btn-sm waves-effect waves-light teal" style='top:-40px;left:100px;'>
+                    <i class='material-icons' style='color:rgba(255, 255, 255, 0.5);'>mode_edit</i>
+                  </button>
+                </div>
+                <div class="col-lg-8" id="project_summary_view_info"></div>
+              </div>
+              <hr class="featurette-divider">
+              <h2 class="form-signin-heading"><i class="material-icons" style="color:#543b79;" aria-hidden="true">view_list</i> <%= language.add_task %></h2>
+              <div class="row">
+                <div class="col-lg-4" id="project_list_file_view">
+                </div>
+                <div class="col-lg-8" id="project_file_view"></div>
+              </div>
+              <hr class="featurette-divider">
+              <h1 class="panel-title" style="padding-left: 2px;padding-top: 2px;"><i class="material-icons" style="margin-top: -5px;color:#543b79;">folder</i> <%= language.your_current_project_folder %></h1>
+              <div class="row">
+                <div class="col-lg-4" id="project_list_file_view_info">
+                  <ul id="project_folder_list" style="list-style: none;">
+                    <li class="disabled"><i class="material-icons" style="float: left;color:#543b79;">folder</i> root</li>
+                  </ul>
+                </div>
+                <div class="col-lg-8" id="project_file_view_info">
+                  <pre>
+                    Diskenda
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default" id="project_presentation" style="padding: 5px; display: none;">
+            <div class="cardview_custom">
+              <button type="button" class="btn btn-raised modal-trigger" id="createProject" data-toggle="modal" data-target="project-dialog" style="background-color:#543b79;color:white;float:right;"><%= language.create_project_btn %></button>
+              <h1 class="panel-title"  style="padding-left: 2px;padding-top: 2px;"><i class="material-icons" style="margin-top: -5px;color:#543b79;">folder</i> <%= language.your_current_projects %></h1>
+              <ul id="your_last_projects" style="list-style: none;"></ul>
+              <p align="right" id="more_project" style="margin-right:5px;"><a href="#"><%= language.see_user_projects %></a></p>
+            </div>
+            <div class="cardview_custom" id="public_project_loader">
+              <h1 class="panel-title"  style="padding-left: 2px;padding-top: 2px;"><i class="material-icons" style="margin-top: -5px;color:#543b79;">folder_open</i> <%= language.public_project %></h1>
+            </div>
+          </div>
+          <div class="panel panel-default" id="group_presentation" style="display: none;">
+            <div class="panel-heading" style="background-color:rgba(255, 255, 255, 0.5); padding-left: 2px;">
+              <h3 class="panel-title"  style="padding-left: 2px;padding-top: 2px;"><span id="group_text_name"></span> <a href="#" id="edit_group_name"><i class="material-icons" style="margin-top: -5px;color:#543b79;">mode_edit</i> <%= language.edit_text %></a><button id="leave_group_btn" class="btn btn-danger" style="float: right;margin-top: -1px;"><i class='material-icons left'>exit_to_app</i> <%= language.leave_text %></button></h3>
+              <h6 class="panel-title" id="created_by_date" style="padding-left: 2px;padding-top: 2px;"></h6>
+              <input type="hidden" id="group_number">
+              <hr class="featurette-divider">
+            </div>
+            <div class="panel-heading" style="background-color:rgba(255, 255, 255, 0.5); padding-left: 2px;">
+              <h5 class="panel-title" style="padding-left: 2px;padding-top: 2px;"><%= language.your_current_projects %> (<span id="group_project_count">0</span>)<a href="#project-dialog" data-toggle="modal" data-target="" class="modal-trigger" style="display: none;" id="group_rename"><i class='material-icons' style='margin-top: -5px;color:#543b79;'>create_new_folder</i><%= language.created_on %></a></h5>
+              <hr class="featurette-divider">
+            </div>
+            <div class="panel-body" style="padding-left: 8px;">
+              <ul class="ul-list-styly" id="group_project_list" style="list-style:none;"></ul>
+            </div>
+            <br>
+            <div class="panel-heading" style="background-color:rgba(255, 255, 255, 0.5); padding-left: 2px;">
+              <h5 class="panel-title" style="padding-left: 2px;padding-top: 2px;"><%= language.members %> (<span id="member_count">0</span>) <a href="#member-dialog" style="display: none;" id="add_member_link" data-toggle="modal" data-target="" class="modal-trigger"><i class='material-icons' style='margin-top: -5px;color:#543b79;'>group_add</i> <span> <%= language.add_member %></span></a></h5>
+              <hr class="featurette-divider">
+            </div>
+            <div class="panel-body" style="padding-left: 8px;">
+              <ul class="ul-list-styly" id="member_list" style="list-style:none;"></ul>
+            </div>
+            <br>
+            <div class="panel-heading" style="background-color:rgba(255, 255, 255, 0.5); padding-left: 2px;">
+              <h5 class="panel-title" style="padding-left: 2px;padding-top: 2px;"><%= language.task_list %> <a href="#" style="display: none;" id="add_task_link"><i class='material-icons' style='margin-top: -5px;color:#543b79;'>view_list</i> <span> <%= language.add_task %></span></a></h5>
+              <hr class="featurette-divider">
+            </div>
+            <div class="panel-body" style="padding-left: 8px;">
+              Task list Panel content
+            </div>
+          </div>
+          
+          <div id="charge"></div>
+          <ul class="nav nav-sidebar" id="delete_ul"></ul>
+          <div id="user_profil" style="display:none;" class="config">
+            <div class="row featurette">
+              <div class="col-md-7 push-md-5">
+                <!--<h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2> -->
+                <p class="lead" align="right">
+                  <a href='/<%= link.log_out_link %>' id='log_out' class='btn btn-primary btn-sm' style='margin-top:2px;background-color:#0066FF;color:white;'>
+                    <i class='material-icons left'>exit_to_app</i> <%= language.log_out %>
+                  </a>
+                </p>
+                <p align="right">
+                  <button type="button" class="btn btn-primary" style="color:white;" id="enable_edit"><i class="material-icons left">mode_edit</i> <%= language.edit_text%></button> <button type="button" class="btn btn-primary" style="color:white;" id="edit_password"><i class="material-icons left">mode_edit</i> <%= language.change_password%></button>
+                </p>
+                <ul class='list-group list-group-flush'>
+                  <li class='list-group-item' id='create_file'>
+                    <%= language.name_placeholder %> : <font id="font_name"><%= user.nom %></font>
+                  </li>
+                  <li class='list-group-item'>
+                    <%= language.last_name_placeholder %> : <font id="font_lastname"><%= user.prenom %></font>
+                  </li>
+                  <li class='list-group-item'>
+                    <%= language.email_placeholder %> : <%= user.email %>
+                  </li>
+                  <li class='list-group-item'>
+                    <%= language.country_placeholder %> : <font id="font_country"><%= user.country %></font>
+                  </li>
+                  <li class='list-group-item'>
+                    <%= language.date_birth_placeholder %> : <font id="font_date_birth"><%= user.dateBirth %></font>
+                  </li>
+                  <li class='list-group-item'>
+                    <%= language.place_birth_placeholder%> : <font id="font_place_birth"><%= user.placeBirth%></font>
+                  </li>
+                </ul>
+                <p align="right">
+                  <button type="button" class="btn btn-danger modal-trigger" style="color:white;" id="delete_account" data-toggle="modal" data-target="delete-dialog"><i class="material-icons left">close</i> <%= language.remove_account%></button>
+                </p>
+              </div>
+              <div class="col-md-5 pull-md-8">
+                <div class="container">
+                  <label class="label" data-toggle="tooltip" title="<%= language.select_image %>">
+                    <img class="rounded" id="avatar" src="/profil" alt="avatar" width="400" height="400">
+                    <input type="file" class="sr-only" id="input" name="image" accept="image/*">
+                  </label>
+                  <div id="cropping-dialog" class="modal modal-fixed-footer" role="document">
+                    <div class="modal-content">
+                      <button type="button" class="close modal-action modal-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title"><i class="material-icons" style="float: left;margin-top:13px; color:#543b79;">crop</i> <%= language.profil_photo %></h4>
+                      <hr>
+                      <div class="img-container" style="width: auto; height: auto;">
+                        <img id="image" src="../images/lg_logo.png">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <!--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a> -->
+                      <button type="button" class="btn btn-raised modal-action modal-close waves-effect waves-green btn-flat" id="crop_button" data-dismiss="modal" style="background-color:#543b79;color:white;"><i class="material-icons">done</i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="featurette-divider">
+            <div class="row featurette" id="photo_block" style="display:none;">
+            <h2 class="form-signin-heading"><i class="material-icons" style="color:#543b79;" aria-hidden="true">person_outline</i><%= language.profil_photo %></h2>
+              <div class="col-md-7 push-md-5">
+                <div id="preview-pane">
+                  <div class="preview-container">
+                    <canvas id="preview" style="width:150px;height:100px;overflow:hidden;display:none;"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5 pull-md-7">
+                <canvas id="viewport" width="602" height="500"></canvas>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" style="color:white;" id="photo_valid" disabled><i class="material-icons">done</i></button>
+              <!--<button type="button" class="btn btn-primary btn-sm" style="color:white;" id="left_rotation" disabled><i class="material-icons">rotate_left</i></button>
+              <button type="button" class="btn btn-primary btn-sm" style="color:white;" id="right_rotation" disabled><i class="material-icons">rotate_right</i></button> -->
+              <div style="width:400px;">
+                <div class="file-field input-field" id="audio_files">
+                  <div class="btn">
+                    <span>Photo</span>
+                    <input type="file" id="inputFile4" multiple accept="image/*">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" id="audio_file_text" placeholder="<%= language.select_image %>">
+                  </div>
+                </div>
+                <!--<div class="form-group">
+              <input type="file" id="inputFile4" accept="image/*">
+              <div class="input-group">
+                <input type="text" readonly="" class="form-control" placeholder="<%= language.select_image %>">
+                  <span class="input-group-btn input-group-sm">
+                    <button type="button" class="btn btn-fab btn-fab-mini">
+                      <i class="material-icons">attach_file</i>
+                    </button>
+                  </span>
+              </div>
+            </div> -->
+              </div>
+            </div>
+
+            <div class="form_signin" id="password_block" style="display:none;">
+            <h2 class="form-signin-heading"><i class="material-icons" style="color:#543b79;" aria-hidden="true">edit</i><%= language.change_password %></h2>
+            <label for="inputPassword" class="sr-only"><%= language.password_placeholder %></label>
+              <input type="password" id="old_password" name="password" class="form-control" placeholder="<%= language.old_password %>" required>
+
+              <label for="inputPassword" class="sr-only"><%= language.password_placeholder %></label>
+              <input type="password" id="new_password" name="password" class="form-control" placeholder="<%= language.new_password %>" required>
+
+              <div class="form-group label-floating">
+                <input class="form-control" id="focusedInput2" type="password" placeholder="<%= language.confirm_new_password %>" required>
+                <p class="help-block" id="confirm_password_help"></p>
+              </div>
+              <button class="btn btn-raised btn-primary btn-block" id="c_pass_send"><i class="material-icons">done</i> <%= language.change_password %></button>
+            </div>
+
+            <div class="form_signin" id="editing_block" style="display:none;">
+              <h2 class="form-signin-heading"><i class="material-icons" style="color:#543b79;" aria-hidden="true">edit</i><%= language.edit_text %> <%= language.my_profil_lower %></h2>
+
+              <label for="inputEmail" class="sr-only"><%= language.name_placeholder %></label>
+              <input type="text" id="inputName" value="<%= user.nom%>" name="name" class="form-control" placeholder="<%= language.name_placeholder %>" required autofocus>
+
+              <label for="inputEmail" class="sr-only"><%= language.last_name_placeholder %></label>
+              <input type="text" id="inputLastName" value="<%= user.prenom%>" name="lastname" class="form-control" placeholder="<%= language.last_name_placeholder %>" required autofocus>
+
+              <label for="inputEmail" class="sr-only"><%= language.email_placeholder %></label>
+              <input type="email" id="inputEmail" value="<%= user.email%>" name="email" class="form-control" placeholder="<%= language.email_placeholder %>" disabled required autofocus>
+
+              <label for="inputEmail" class="sr-only"><%= language.country_placeholder %></label>
+              <input type="text" id="inputCountry" value="<%= user.country%>" name="country" class="form-control" placeholder="<%= language.country_placeholder %>" required autofocus>
+
+              <label for="inputEmail" class="sr-only"><%= language.date_birth_placeholder %></label>
+              <input type="text" id="inputDate" value="<%= user.dateBirth%>" name="date" class="form-control" placeholder="<%= language.date_birth_placeholder %>" required autofocus>
+
+              <label for="inputEmail" class="sr-only"><%= language.place_birth_placeholder %></label>
+              <input type="text" id="inputPlace" value="<%= user.placeBirth%>" name="place" class="form-control" placeholder="<%= language.place_birth_placeholder %>" required autofocus>
+
+              <input type="hidden" value="<%= user.id %>" name="language" id="user_id">
+
+              <button class="btn btn-raised btn-primary btn-block" id="edit_send"><i class="material-icons">done</i> <%= language.edit_text %></button>
+            </div>
+
+          </div>
+          <!--<div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-fluid" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-fluid" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-fluid" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-fluid" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+          </div>
+
+          <h2>Section title</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr style="background-color:#03a9f4;">
+                  <th>#</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1,001</td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td>1,002</td>
+                  <td>amet</td>
+                  <td>consectetur</td>
+                  <td>adipiscing</td>
+                  <td>elit</td>
+                </tr>
+                <tr>
+                  <td>1,003</td>
+                  <td>Integer</td>
+                  <td>nec</td>
+                  <td>odio</td>
+                  <td>Praesent</td>
+                </tr>
+                <tr>
+                  <td>1,003</td>
+                  <td>libero</td>
+                  <td>Sed</td>
+                  <td>cursus</td>
+                  <td>ante</td>
+                </tr>
+                <tr>
+                  <td>1,004</td>
+                  <td>dapibus</td>
+                  <td>diam</td>
+                  <td>Sed</td>
+                  <td>nisi</td>
+                </tr>
+                <tr>
+                  <td>1,005</td>
+                  <td>Nulla</td>
+                  <td>quis</td>
+                  <td>sem</td>
+                  <td>at</td>
+                </tr>
+                <tr>
+                  <td>1,006</td>
+                  <td>nibh</td>
+                  <td>elementum</td>
+                  <td>imperdiet</td>
+                  <td>Duis</td>
+                </tr>
+                <tr>
+                  <td>1,007</td>
+                  <td>sagittis</td>
+                  <td>ipsum</td>
+                  <td>Praesent</td>
+                  <td>mauris</td>
+                </tr>
+                <tr>
+                  <td>1,008</td>
+                  <td>Fusce</td>
+                  <td>nec</td>
+                  <td>tellus</td>
+                  <td>sed</td>
+                </tr>
+                <tr>
+                  <td>1,009</td>
+                  <td>augue</td>
+                  <td>semper</td>
+                  <td>porta</td>
+                  <td>Mauris</td>
+                </tr>
+                <tr>
+                  <td>1,010</td>
+                  <td>massa</td>
+                  <td>Vestibulum</td>
+                  <td>lacinia</td>
+                  <td>arcu</td>
+                </tr>
+                <tr>
+                  <td>1,011</td>
+                  <td>eget</td>
+                  <td>nulla</td>
+                  <td>Class</td>
+                  <td>aptent</td>
+                </tr>
+                <tr>
+                  <td>1,012</td>
+                  <td>taciti</td>
+                  <td>sociosqu</td>
+                  <td>ad</td>
+                  <td>litora</td>
+                </tr>
+                <tr>
+                  <td>1,013</td>
+                  <td>torquent</td>
+                  <td>per</td>
+                  <td>conubia</td>
+                  <td>nostra</td>
+                </tr>
+                <tr>
+                  <td>1,014</td>
+                  <td>per</td>
+                  <td>inceptos</td>
+                  <td>himenaeos</td>
+                  <td>Curabitur</td>
+                </tr>
+                <tr>
+                  <td>1,015</td>
+                  <td>sodales</td>
+                  <td>ligula</td>
+                  <td>in</td>
+                  <td>libero</td>
+                </tr>
+              </tbody>
+            </table>
+          </div> -->
+          <div id="previewDiv" style="display:none;">
+            <div class="row placeholders">
+            <div class="jumbotron">
+              <h4>Description</h4>
+
+              <p id="desc_summ"></p>
+
+            </div>
+           </div>
+
+                <h2>Propriétés</h2>
+                <div class="table-responsive">
+                  <table class="table table-striped table-bordered" id="method_table">
+                    <thead>
+                      <tr style="background-color:#03a9f4;">
+                        <th>Propriété</th>
+                        <th>Type</th>
+                        <th>Portée</th>
+                        <th>Obsolète</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="method_tbody">
+                    </tbody>
+                  </table>
+                </div>
+                <h3>Codes</h3>
+                <pre id="code_summ"><code></code></pre>
+          </div>
+          <hr class="featurette-divider">
+          <!-- FOOTER -->
+      <footer>
+        <p>
+          <a href="/connected" class="footer-lng"><img src="../images/en.gif" width="20" height="15"> English</a> | <a href="/fr/connected" class="footer-lng"><img src="../images/fr.png" width="20" height="15"> Français</a>
+        </p>
+        <p><i class="material-icons" style="color:#543b79;margin-top:-2px;float:left;" aria-hidden="true">copyright</i> <%= annee %> Tosala, Inc. &middot; <a href="#"><%= language.privacy_text%></a> &middot; <a href="#"><%= language.terms_text%></a> &middot; <a href="#"><%= language.bottom_link %></a></p>
+        <p align="center">v1.0.5</p>
+      </footer>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="scrollToTop"><i class="material-icons" aria-hidden="true" id="scroll_arrow" style="color: #543b79;">keyboard_arrow_up</i></a>
+
+  <div id="group-dialog" class="modal modal-fixed-footer fade">
+    <div class="modal-content">
+      <button type="button" class="modal-close close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title"><i class="material-icons" style="float: left;margin-top:13px; color:#543b79;">group_work</i> <%= language.create_group %></h4>
+      <hr>
+      <p>Here will be terms of use</p>
+      <hr class="featurette-divider">
+      <div class="input-field col s12">
+        <input type="text" id="inputGroupName" name="groupname" class="validate" required autofocus>
+        <label for="inputGroup"><%= language.create_group_input_group %></label>
+      </div>
+      <div class="input-field col s12">
+        <input type="text" id="inputMember" class="validate" required>
+        <label for="inputMember"><%= language.create_group_input_member %></label>
+      </div>
+      <p>
+        <i class="material-icons" style="float: left; color:#543b79;">info_outline</i>  <%= language.create_group_info_text %>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <!--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a> -->
+      <button type="button" class="btn btn-raised modal-action modal-close waves-effect waves-green" id="createGroup" data-dismiss="modal" style="background-color:#543b79;color:white;"><%= language.create_group_btn %></button>
+    </div>
+  </div>
+<div id="project-dialog" class="modal modal-fixed-footer fade" tabindex="-1">
+  <div class="modal-content">
+    <button type="button" class="modal-close close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title"><i class="material-icons" style="float: left;margin-top:13px; color:#543b79;">create_new_folder</i> <%= language.create_project %></h4>
+    <hr>
+    <p>Here will be terms of use</p>
+    <hr class="featurette-divider">
+    <div class="input-field col s12">
+      <input type="text" id="project_name" name="groupname" class="validate" required autofocus>
+      <label for="project_name"><%= language.create_project_input_name %></label>
+    </div>
+    <div class="input-field col s12">
+      <textarea id="proj_desc" class="materialize-textarea"></textarea>
+      <label for="proj_desc"><%= language.create_project_description %></label>
+    </div>
+    <label for="range_select"><%= language.range_project_text %></label>
+    <select id="range_select" class="browser-default">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="private"><%= language.private_project %></option>
+      <option value="public"><%= language.public_project_text %></option>
+    </select>
+
+    <label for="project_type_select"><%= language.top_bar_projects %></label>
+    <select id="project_type_select" class="browser-default">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="groupe"><%= language.group_project_text %></option>
+      <option value="individual"><%= language.individual_project %></option>
+    </select>
+
+    <div class="form-group" id="load_group_list_container" style="display: none;">
+      <label class="col-md-2 control-label"><%= language.group_mention %></label>
+
+      <div class="col-md-10" id="load_group_list"></div>
+    </div>
+    <p>
+      <i class="material-icons" style="float: left; color:#543b79;">info_outline</i>  <%= language.create_group_info_text %>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <!--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a> -->
+    <button type="button" class="btn btn-raised modal-action modal-close waves-effect waves-green" id="createProj" data-dismiss="modal" style="background-color:#543b79;color:white;"><%= language.create_project_btn %></button>
+  </div>
+  <!--<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="modal-close close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><i class="material-icons" style="float: left;margin-top:5px; color:#543b79;">create_new_folder</i> <%= language.create_project %></h4>
+      </div>
+      <div class="modal-body">
+        <p>Here will be terms of use</p>
+        <hr class="featurette-divider">
+        <label for="inputGroup" class="sr-only"><%= language.create_group_input_group %></label>
+        <input type="text" id="project_name" name="project_name" class="form-control" placeholder="<%= language.create_project_input_name %>" required autofocus>
+        <label for="inputMember" class="sr-only"><%= language.create_group_input_member %></label>
+        <textarea class="form-control" id="proj_desc" rows="3" placeholder="<%= language.create_project_description %>"></textarea>
+        <div class="form-group">
+          <label for="select111" class="col-md-2 control-label"><%= language.range_project_text %>:</label>
+
+          <div class="col-md-10">
+            <select id="select111" class="form-control">
+              <option></option>
+              <option value="private"><%= language.private_project %></option>
+              <option value="public"><%= language.public_project_text %></option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="select111" class="col-md-2 control-label"><%= language.top_bar_projects %>:</label>
+
+          <div class="col-md-10">
+            <select id="type_project" class="form-control">
+              <option></option>
+              <option value="groupe"><%= language.group_project_text %></option>
+              <option value="individual"><%= language.individual_project %></option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" id="load_group_list_container" style="display: none;">
+            <label class="col-md-2 control-label"><%= language.group_mention %></label>
+
+            <div class="col-md-10" id="load_group_list"></div>
+          </div>
+        <p>
+          <i class="material-icons" style="float: left; color:#543b79;">info_outline</i>  <%= language.create_group_info_text %>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-raised" id="createProj" data-dismiss="modal" style="background-color:#543b79;color:white;"><%= language.create_project_btn %></button> 
+      </div>
+    </div>
+  </div>-->
+</div>
+<div id="member-dialog" class="modal modal-fixed-footer fade" tabindex="-1">
+  <div class="modal-content">
+    <button type="button" class="modal-close close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title"><i class="material-icons" style="float: left;margin-top:13px; color:#543b79;">group_add</i> <%= language.add_member %></h4>
+    <hr>
+    <p>Here will be terms of use</p>
+    <div class="input-field col s12">
+      <input type="text" id="inputMemberMember" name="groupname" class="validate" required autofocus>
+      <label for="inputMemberMember"><%= language.create_group_input_member %></label>
+    </div>
+    <p>
+      <i class="material-icons" style="float: left; color:#543b79;">info_outline</i>  <%= language.create_group_info_text %>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-raised btn-success modal-action modal-close waves-effect waves-green" id="addNewMember" data-dismiss="modal" style="background-color:#543b79;color:white;"><%= language.add_member %></button>
+  </div>
+</div>
+<div id="mail-dialog" class="modal modal-fixed-footer fade" tabindex="-1">
+  <div class="modal-content">
+    <button type="button" class="modal-close close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title"><i class="material-icons" style="float: left;margin-top:13px; color:#543b79;">mail</i> <%= language.new_invitation %></h4>
+    <hr>
+    <p><%= language.from %> : <font id="mail_from"></font>.</p>
+    <hr class="featurette-divider">
+    <p><%= language.invited_you %> <font id="textMsg" style="font-weight:bold;"></font></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-raised btn-success modal-action modal-close waves-effect waves-green" id="confirm_invitation_request" data-dismiss="modal" style="color:white;"><%= language.agree_button %></button>
+    <button type="button" class="btn btn-raised btn-danger modal-action modal-close waves-effect waves-green" id="cancel_invitation_request" data-dismiss="modal" style="color:white;"><%= language.reject_button %></button>
+    <input type="hidden" id="invit_hidden_id" value="">
+    <input type="hidden" id="group_hidden_id" value="">
+  </div>
+</div>
+<div id="delete-dialog" class="modal modal-fixed-footer fade">
+  <div class="modal-content">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="header_text"><i class="material-icons" style="color:red;">close</i> <%= language.remove_account%></h4>
+    <hr>
+    <p>Fore aut non quem incididunt, varias reprehenderit deserunt quem offendit,
+      cillum proident ne reprehenderit, quem ad laborum, quo possumus praetermissum,
+      si ne illustriora, hic appellat coniunctione, do labore aliqua quo probant. In
+      probant voluptatibus quo mentitum est laboris. Quorum mandaremus graviterque.
+      Mentitum id velit, dolor aut litteris, ea varias illustriora, ita commodo ita
+      ingeniis, iis nulla appellat incurreret, aut irure amet summis pariatur ita ubi
+      quis dolore veniam proident, consequat sed ingeniis.</p>
+  </div>
+  <div class="modal-footer">
+    <!--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a> -->
+    <button type="button" class="btn btn-raised btn-danger modal-action modal-close waves-effect waves-green" id="delete_account_delete" data-dismiss="modal" style="border-color:white;"><%= language.delete_text_button %></button>
+  </div>
+</div>
+<div id="<%= DynId%>" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= language.welcome_title_text%></h4>
+      </div>
+      <div class="modal-body">
+        <p><%= message%></p>
+        <p align="right"><i class="material-icons" style="color:#543b79;margin-top:-2px;float:right;" aria-hidden="true">copyright</i> <i>TOSALA</i></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= language.close_text%></button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="notification-dialog" class="modal modal-fixed-footer fade" tabindex="-1">
+  <div class="modal-content">
+    <button type="button" class="close" id="notification_updaters" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title"><i class="material-icons" style="float: left;margin-top:13px; color:#543b79;">info</i> <%= language.notification %></h4>
+    <hr>
+    <p><%= language.from %>: <font id="notif_from"></font>.</p>
+    <hr class="featurette-divider">
+    <p><%= language.invited_you %> <font id="textMsgNotif" style="font-weight:bold;"></font></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="notification_updater" class="btn btn-default modal-action modal-close waves-effect waves-green" data-dismiss="modal"><%= language.close_text%></button>
+    <input type="hidden" id="notif_hidden_id" value="">
+    <input type="hidden" id="sen_rec_hidden_id" value="">
+  </div>
+</div>
+<a href="#" style="display: none;" id="welcome_trigger" data-toggle="modal" data-target="#<%= DynId%>">tigger</a>
+<input type="hidden" id="ip_connect" value="<%= socketConnect %>">
+  <!-- Bootstrap core JavaScript
+================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="../assets/js/vendor/jquery.min.js"></script>
+  <script src="../dist/js/jquery-ui.min.js"></script>
+  <script src="../dist/js/materialize.min.js?1"></script>
+  <script src="../dist/js/pagination.min.js?1"></script>
+  <script src="../assets/js/vendor/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+
+  <script src="../dist/js/ripples.min.js"></script>
+  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+  <script src="../assets/js/vendor/holder.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="../dist/js/RequestHandler.js?2"></script>
+
+  <script src="../dist/js/init.js?2"></script>
+  <script src="../dist/js/replace-diacritics.js"></script>
+  <script src="../dist/js/netic.js?2"></script>
+  <script src="../dist/js/typeahead.min.js?143"></script>
+  <script src="../socket.io/socket.io.js"></script>
+    <script src="../dist/js/dashboard.js?731"></script>
+  <script src="../dist/js/cropper.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      //$.material.init();
+        //$('select').material_select();
+      //alert($('html').attr('lang'))
+      var checking = '<%= message%>'
+      if(checking.length > 0){
+        $('#welcome_trigger').trigger('click');
+      }
+      $('#enable_edit').click(function(){
+        $('#password_block, #photo_block').slideUp('slow', function(){
+          $('#editing_block').slideDown('slow', function(){
+            $('html, body').animate({
+              scrollTop:$('#editing_block').offset().top
+            })
+          });
+        });
+      });
+      $('#edit_password').click(function(){
+        $('#editing_block, #photo_block').slideUp('slow', function(){
+          $('#password_block').slideDown('slow', function(){
+            $('html, body').animate({
+              scrollTop:$('#password_block').offset().top
+            })
+          });
+        });
+      });
+      $('#pop').on('click', function (event){
+        event.preventDefault();
+        setInterval(pp, 100)
+        $bool = true;
+      })
+      //$("#pop").popover({placement:'bottom'});
+
+      function pp () {
+        // body...
+        // console.log($('.popover').is(':visible'))
+        if($('.popover').is(':visible'))
+          if($bool)
+            $('.popover').css({'margin-left':'-30px'})
+          manageItem();
+      }
+      function manageItem () {
+        // body...
+        var lng = '<%= language.my_profil %>';
+        if($('.popover').is(':visible')){
+          $('.popover-title').on('click', 'a', function (e){
+           e.preventDefault();
+           $('#file_title').html(lng);
+           $('#user_profil').slideDown('slow');
+           $('#group_presentation, #project_presentation, #summary_presentation, #project_summary_view').slideUp('slow');
+           $('#back_to_home_btn').show('slide');
+          })
+        }
+      }
+      $('#show_profile').click(function(event){
+          event.preventDefault();
+          let lng = '<%= language.my_profil %>';
+          $('#file_title').html(lng);
+          $('#user_profil').slideDown('slow');
+          $('#group_presentation, #project_presentation, #summary_presentation, #project_summary_view').slideUp('slow');
+          $('#back_to_home_btn').show('slide');
+      });
+    });
+    </script>
+  <script>
+      window.addEventListener('DOMContentLoaded', function () {
+          var avatar = document.getElementById('avatar');
+          var image = document.getElementById('image');
+          var input = document.getElementById('input');
+          var $progress = $('.progress');
+          var $progressBar = $('.progress-bar');
+          var $alert = $('.alert');
+          var $modal = $('#cropping-dialog');
+          var cropper;
+
+          $('[data-toggle="tooltip"]').tooltip();
+
+          input.addEventListener('change', function (e) {
+              var files = e.target.files;
+              var done = function (url) {
+                  input.value = '';
+                  image.src = url;
+                  $alert.hide();
+                  $modal.modal('open');
+                  cropper = new Cropper(image, {
+                      viewMode: 3,
+                  });
+              };
+              var reader;
+              var file;
+              var url;
+
+              if (files && files.length > 0) {
+                  file = files[0];
+
+                  if (URL) {
+                      done(URL.createObjectURL(file));
+                  } else if (FileReader) {
+                      reader = new FileReader();
+                      reader.onload = function (e) {
+                          done(reader.result);
+                      };
+                      reader.readAsDataURL(file);
+                  }
+              }
+          });
+
+          $modal.on('shown.bs.modal', function () {
+              cropper = new Cropper(image, {
+                  aspectRatio: 1,
+                  viewMode: 3,
+              });
+          }).on('hidden.bs.modal', function () {
+              cropper.destroy();
+              cropper = null;
+          });
+
+          document.getElementById('crop_button').addEventListener('click', function () {
+              var initialAvatarURL;
+              var canvas;
+
+              $modal.modal('close');
+
+              if (cropper) {
+                  canvas = cropper.getCroppedCanvas({
+                      width: 602,
+                      height: 500,
+                  });
+                  initialAvatarURL = avatar.src;
+                  avatar.src = canvas.toDataURL();
+                  $progress.show();
+                  $alert.removeClass('alert-success alert-warning');
+                  canvas.toBlob(function (blob) {
+                      var formData = new FormData();
+
+                      formData.append('photo', blob, 'avatar.jpg');
+                      formData.append('lang', $('html').attr('lang'));
+                      $.ajax('/update_profil_photo', {
+                          method: 'POST',
+                          data: formData,
+                          processData: false,
+                          contentType: false,
+
+                          xhr: function () {
+                              var xhr = new XMLHttpRequest();
+
+                              xhr.upload.onprogress = function (e) {
+                                  var percent = '0';
+                                  var percentage = '0%';
+
+                                  if (e.lengthComputable) {
+                                      percent = Math.round((e.loaded / e.total) * 100);
+                                      percentage = percent + '%';
+                                      $progressBar.width(percentage).attr('aria-valuenow', percent).text(percentage);
+                                  }
+                              };
+
+                              return xhr;
+                          },
+
+                          success: function (answer) {
+                              //$alert.show().addClass('alert-success').text('Upload success');
+                              if(answer.tag === 'success'){
+                                  alert(answer.message);
+                                  $('#sm_pic').attr('src', '../images/indicator.gif');
+                                  setTimeout(function() {
+                                      $('#sm_pic').attr('src', '/profil?'+Math.floor(Math.random() * (99999999 - 100000 + 10000000)+10000000));
+                                  }, 2000);
+                              }else if(answer.tag === 'warning'){
+                                  alert(answer.message);
+                              }else if(answer === 'session_expired'){
+                                  setInterval(function(){
+                                      decompte('restart_warning');
+                                  },1000)
+                              }
+                          },
+
+                          error: function () {
+                              avatar.src = initialAvatarURL;
+                              $alert.show().addClass('alert-warning').text('Upload error');
+                          },
+
+                          complete: function () {
+                              $progress.hide();
+                          },
+                      });
+                  });
+                  cropper.destroy();
+                  cropper = null;
+              }else {
+                  alert('Failed!');
+              }
+          });
+      });
+  </script>
+  </body>
+</html>

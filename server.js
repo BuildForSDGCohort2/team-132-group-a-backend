@@ -27,13 +27,13 @@ app.use(morgan('dev'));                     // log every request to the console
 app.use(bodyParser());                      // pull information from html in POST
 app.use(methodOverride());                  // simulate DELETE and PUT
 app.use(cookieParser());
-app.use(session({ secret: 'letwork-workspace_app', cookie: { maxAge: 10000000 }}));
+app.use(session({ secret: 'ToSala-workspace_app', cookie: { maxAge: 10000000 }}));
 app.use(flash());
 app.use('/static', express.static(path.join(__dirname, 'public')));
 //app.use(multer({ dest: './tmp/'}));
 
 server.listen(process.env.PORT || 2212);
-appFiles.FileUtils.logger('Hello, I\'m listening on 2212 port so, letwork !');
+appFiles.FileUtils.logger('Hello, I\'m listening on 2212 port so, ToSala !');
 var config = {
     socketIns:io,
     src:appFiles,

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="<%= language.language %>" session="<%= sessionTag %>">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="keywords" content="Workspace, Espace de travail, TOSALA">
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Tosala  Inc">
+    <meta name="og:description" content="<%= language.top_bar_forum %> - <%= language.site_description%>" />
+    <meta property="og:title" content="Tosala">
+    <meta property="og:image" content="/images/logo.png">
+    <link rel="icon" href="/favicon" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon" type="image/x-icon">
+
+    <title>Tosala - <%= language.top_bar_forum %></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/materialize.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../dist/css/roboto.ttf">
+    <link href="../css/carousel.css?2" rel="stylesheet">
+    <link href="../dist/css/ripples.min.css" rel="stylesheet">
+    <link href="../dist/css/pagination.css" rel="stylesheet">
+    <link href="../dist/css/iconfont/material-icons.css" rel="stylesheet">
+    <link href="../dist/css/style.css" rel="stylesheet">
+    <link href="../css/dashboard.css?1023" rel="stylesheet">
+  </head>
+
+  <body style="background-color: #fff;">
+  <div id="loader">
+    <div class="position-center-center">
+      <img src="../images/logo.png" alt="">
+      <p class="text-center"><%= language.loading_text %></p>
+      <div class="preloader-wrapper small active">
+        <div class="spinner-layer spinner-black-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include ('header'); -%>
+  <!-- Carousel
+    ================================================== -->
+  <!--<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <img class="first-slide" src="/images/city.jpg" alt="First slide">!
+        <div class="container">
+          <div class="carousel-caption text-xs-left">
+            <h1>Example headline.</h1>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <% if (sessionTag == 'false') { %>
+            <p><a class="btn btn-lg btn-raised btn-primary" href="/<%= link.connected_link %>" role="button" style="background-color:#0066ff;color:white;"><%= language.sign_in %></a></p>
+              <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> --><!-- /.carousel -->
+
+  <div class="row bg-parallax fullWidth" style="margin-left:0!important;margin-right:0px!important;height:650px;background:url(../images/hbi_first.png) fixed no-repeat;">
+    <div class="row" style="padding: 2px;margin: 0" id="public_project_loader">
+      <h3 class="panel-title" id="subUpper" align="left" style="padding-left: 2px;padding-top: 2px;color: #fff;margin-top: 15%;"><%= language.community_welcome_text.toUpperCase() %></h3>
+      <h4 class="panel-title" align="left" style="padding-left: 2px;padding-top: 2px;color: #fff;margin-left: 15px;"><%= language.home.toUpperCase() %> > <%= language.top_bar_forum.toUpperCase() %></h4>
+    </div>
+  </div><!-- /.row -->
+
+  <% if (sessionTag === true) { %>
+    <button id="user_profil_block" style="background-color: #000!important;position: relative; top:-40px;left: 142px;" type="button" class="btn-floating btn-sm waves-effect waves-light teal modal-trigger" data-toggle="modal" data-target="community-dialog">
+      <i class='material-icons' style='color:rgba(255, 255, 255, 0.5);'>group_work</i>
+    </button>
+
+  <% } %>
+
+  <div class="row bg-parallax fullWidth" style:"">
+    <div class="row" style="padding: 2px;margin: 0">
+      <div class="col-lg-2" style="background-color: transparent;">
+        <h6 class="panel-title" align="center" style="padding-left: 2px;padding-top: 2px;"><i class="material-icons" style="float: left;margin-top:-5px; color:#543b79;">star</i><%= language.popular_text.toUpperCase() %></h6>
+        <hr>
+        <ul id="menu_horizontal">
+          <!--<li>
+            <figure class="book">
+              <h3 class="panel-title" align="center" style="background-color:rgba(0, 0, 0, 0.5);color:white;padding-left: 2px;padding-top: 2px;">Tosala Inc</h3>
+              <img title="#" alt="" src="../images/city.jpg" class="img-thumbnail">
+              <figcaption>1,5k</figcaption>
+              <figcaption>
+                <% if (sessionTag == 'true') { %>
+                  <button id="search_button" type="button" class="btn btn-secondary btn-sm" style="padding: 2px;margin:2px;">
+                    <i class='material-icons' style='color:rgb(84, 59, 121);'>star</i>
+                  </button>
+                <% } %>
+                <button id="search_button" type="button" class="btn btn-secondary btn-sm" style="padding: 2px;margin:2px;">
+                  <i class='material-icons' style='color:rgba(84, 59, 121, 0.5);'>exit_to_app</i>
+                </button>
+                <button id="search_button" type="button" class="btn btn-secondary btn-sm" style="padding: 2px;margin:2px;">
+                  <i class='material-icons' style='color:rgba(84, 59, 121, 0.5);'>info</i>
+                </button>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="book">
+              <h3 class="panel-title" align="center" style="background-color:rgba(0, 0, 0, 0.5);color:white;padding-left: 2px;padding-top: 2px;">Tosala Inc</h3>
+              <img title="#" alt="" src="/images/city.jpg" class="img-thumbnail">
+              <figcaption>1,5k</figcaption>
+              <figcaption>
+                <% if (sessionTag == 'true') { %>
+                  <button id="search_button" type="button" class="btn btn-secondary btn-sm" style="padding: 2px;margin:2px;">
+                    <i class='material-icons' style='color:rgba(84, 59, 121, 0.5);'>star</i>
+                  </button>
+                <% } %>
+                <button id="search_button" type="button" class="btn btn-secondary btn-sm" style="padding: 2px;margin:2px;">
+                  <i class='material-icons' style='color:rgba(84, 59, 121, 0.5);'>exit_to_app</i>
+                </button>
+                <button id="search_button" type="button" class="btn btn-secondary btn-sm" style="padding: 2px;margin:2px;">
+                  <i class='material-icons' style='color:rgba(84, 59, 121, 0.5);'>info</i>
+                </button>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <div style='background-color:rgba(84, 59, 121, 0.5);'>
+              <h3 class="panel-title" align="center" style="background-color:rgba(0, 0, 0, 0.5);color:white;padding-left: 2px;padding-top: 2px;">Tosala Inc</h3>
+              <div class="thumbnail">
+                <img src="/images/city.jpg" class="img-thumbnail" align="center" alt="img">
+              </div>
+              <button id="search_button" type="button" class="btn btn-secondary btn-sm" style="float:right;">
+                <i class='material-icons' style='color:rgba(84, 59, 121, 0.5);'>info</i>
+              </button>
+              <button id="search_button" type="button" class="btn btn-secondary btn-sm" style="float:right;">
+                <i class='material-icons' style='color:rgba(84, 59, 121, 0.5);'>exit_to_app</i>
+              </button>
+              <span style='margin-top:14px;float:right;'>
+              <i class='material-icons' style='color:rgba(84, 59, 121, 0.5);'>star</i>
+              <span style='margin-top:3px;float:right;'>1,5k</span>
+            </span>
+            </div>
+          </li>-->
+        </ul>
+      </div>
+      <div class="col-lg-7" style="border-left: 1px solid #dadada;border-right: 1px solid #dadada;">
+        <h5 class="center" id="news_list_title"><i class='material-icons' style='top:3px;color:#543b79;'>view_list</i><%= language.best_articles_text.toUpperCase() %></h5>
+        <div class="row" style="padding: 2px;margin: 0; color:black;" id="latest_articles_id">
+          <div align="center">
+            <img src="../images/indicator.gif" alt="loading">
+          </div>
+          <h3 align="center"><%= language.loading_text %></h3>
+        </div>
+      </div>
+      <div class="col-lg-3" style="color: black;">
+        <!--<h6 class="center" id="audio_title">LECTEUR AUDIO</h6>
+        <div class="row" id="audio_row"></div> -->
+        <% if (sessionTag == 'true') { %>
+          <h4><%= language.your_communities_text %></h4>
+          <div class="row">
+            <ul id="communities_block_list" style="list-style: none;"></ul>
+          </div>
+          <hr>
+        <% } %>
+        <h4><%= language.suggestion_text %></h4>
+        <div class="row">
+          <ul id="suggestion_block_list" style="list-style: none;"></ul>
+        </div>
+        <hr>
+        <h4><%= language.latest_articles_text %></h4>
+        <hr>
+        <h4><%= language.domains_text %></h4>
+        <hr>
+        <h4><%= language.archies_text %></h4>
+        <hr>
+        <h4><%= language.tags_text %></h4>
+        <div class="row">
+          <p id="tags_block_list"></p>
+        </div>
+      </div>
+    </div>
+  </div><!-- /.row -->
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+    </div><!-- /.container -->
+
+  <a href="#" class="scrollToTop"><i class="material-icons" aria-hidden="true">keyboard_arrow_up</i></a>
+  <div class="row custom-back" style="margin:0px;margin-top: 3px;">
+    <div class="col-md-4">
+      <hr class="featurette-dividers">
+      <h3 class="block-title no-underline"><span class="text-primary" style="color: #543b79!important;font-weight: bold;font-size: 20px;">TOSALA</span></h3>
+      <div class="block-content">
+        <p>Tosala  Inc. brought to you as a result of the 2020 Andela & facebook Build for SDG Innovators challenge</p>
+            <img class="footer-logo" src="../images/logo.png" alt="" width="80" height="72" /> </div>
+      <p style="margin-top:2px;">
+        <i class="material-icons" style="margin-top:-2px;float:left;" aria-hidden="true">copyright</i><font style:""><%= annee %> Tosala, Inc.</font>
+        <!--&middot;<br>
+        <a href="#" style="color:#000;">Privacy</a> &middot; <a href="#" style="color:#000;">Terms</a>-->
+      </p>
+    </div>
+    <div class="col-md-3" align="center">
+      <hr class="featurette-dividers">
+      <a href="javascript:void(0);" class="btn btn-sm btn-link" style="color: #636363!important;"><%= language.privacy_text%></a> &middot;
+      <a href="javascript:void(0);" class="btn btn-sm btn-link" style="color: #636363!important;"><%= language.terms_text%></a>&middot;
+      <a href="javascript:void(0);" class="btn btn-sm btn-link" style="color: #636363!important;"><%= language.bottom_link %></a>
+    </div>
+    <div class="col-md-2">
+      <hr class="featurette-dividers">
+      <p>
+        <a href="/<%= link.dashboard_forum_home_link %>" class="footer-lng"><img src="../images/en.gif" width="20" height="15"> English</a> | <a href="/fr/<%= link.dashboard_forum_home_link %>" class="footer-lng"><img src="../images/fr.png" width="20" height="15"> Français</a>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <hr class="featurette-dividers">
+      <!-- FOOTER -->
+      <a href="javascript:void(0);"><img src="../images/logoi.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../images/logoin.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../images/logos.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../images/logot.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../images/logog.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../images/logofb.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../images/logoy.png" width="30" height="30"></a>
+    </div>
+  </div>
+  <div id="modal1" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title"><i class="material-icons" style="float: left;margin-top:5px; color:#543b79;">group_work</i> <%= language.create_community %></h4>
+        </div>
+        <div class="modal-body">
+          <p>Here will be terms of use</p>
+          <hr>
+          <label for="inputGroup" class="sr-only"><%= language.create_community_input_group %></label>
+          <input type="text" id="community_namex" name="groupname" class="form-control" placeholder="<%= language.create_community_input_group %>" required autofocus>
+          <label for="inputMember" class="sr-only"><%= language.create_group_input_member %></label>
+          <textarea class="form-control" id="descriptionx" rows="3" placeholder="<%= language.create_project_description %>"></textarea>
+          <input type="text" id="tags_inputx" name="groupname" class="" placeholder="<%= language.tags_text %> <%= language.tags_text_ex %>" required>
+          <ul class="menu_edited" id="tags_listx"></ul>
+          <p>
+            <i class="material-icons" style="float: left; color:#543b79;">info_outline</i>  <%= language.create_community_info_text %>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-raised" id="createCommunityx" data-dismiss="modal" style="background-color:#543b79;color:white;"><%= language.create_community_btn %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="community-dialog" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title"><i class="material-icons" style="float: left;margin-top:13px; color:#543b79;">group_work</i> <%= language.create_community %></h4>
+      <hr>
+      <p>Here will be terms of use</p>
+
+      <div class="input-field col s12">
+        <input id="community_name" type="text" name="password" class="validate" required>
+        <label for="community_name"><%= language.create_community_input_group %></label>
+      </div>
+      <div class="input-field col s12">
+        <textarea id="description" class="materialize-textarea"></textarea>
+        <label for="description"><%= language.create_project_description %></label>
+      </div>
+      <div class="input-field col s12">
+        <input id="tags_input" type="text" name="password" class="validate" required>
+        <label for="tags_input"><%= language.tags_text %> <%= language.tags_text_ex %></label>
+      </div>
+      <ul class="menu_edited" id="tags_list"></ul>
+      <p>
+        <i class="material-icons" style="float: left; color:#543b79;margin-top:3px;">info_outline</i>  <%= language.create_community_info_text %>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <!--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a> -->
+      <button type="button" class="btn btn-raised modal-action modal-close waves-effect waves-green btn-flat" id="createCommunity" data-dismiss="modal" style="background-color:#543b79;color:white;"><%= language.create_community_btn %></button>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript
+================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="../assets/js/vendor/jquery.min.js"></script>
+  <script src="../dist/js/jquery-ui.min.js"></script>
+  <script src="../dist/js/materialize.min.js?1"></script>
+  <script src="../dist/js/pagination.min.js?1"></script>
+  <script src="../assets/js/vendor/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+
+  <script src="../dist/js/ripples.min.js"></script>
+  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+  <script src="../assets/js/vendor/holder.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="../dist/js/RequestHandler.js?2"></script>
+
+  <script src="../dist/js/init.js?2"></script>
+  <script src="../dist/js/replace-diacritics.js"></script>
+  <script src="../dist/js/netic.js?2"></script>
+  <script src="../dist/js/typeahead.min.js?143"></script>
+  <script src="../dist/js/community_global.js?146"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      //$.material.init();
+        $('.scrollToTop').mouseover(function(){
+            $('.scrollToTop').animate({
+                backgroundColor: '#543b79',
+                color:'#d1caca',
+                borderColor: '#543b79'
+            }, 200);
+        });
+        $('.scrollToTop').mouseout(function(){
+            $('.scrollToTop').animate({
+                backgroundColor: 'transparent',
+                color:'#543b79',
+                borderColor: '#543b79'
+            }, 200);
+        });
+        $('#serach').on('click', function(event){
+            event.preventDefault();
+            if($('#searching_nav').is(':visible')){
+                //alert('true')
+                //$('#searching_nav').slideUp('slow');
+                $('#searching_nav').slideUp('slow', function(){
+                    //alert('true')
+                    //$('#searching_nav').show('slide');
+                });
+            }else{
+                //alert('false')
+                $('#searching_nav').slideDown('slow', function(){
+                    //alert('true')
+                    //$('#main_nav').show('slide');
+                    $(this).animate({
+                        'margin-top':'25px'
+                    }, 1000, function(){
+                        //alert('terminé');
+                    });
+                });
+            }
+        });
+        function scroller () {
+            // body...
+            //$('.scrollToTop, a').tooltip({ placement:'bottom' });
+            $(window).scroll(function(){
+                if ($(this).scrollTop() > 100) {
+                    $('.scrollToTop').fadeIn();
+                    //$('.cd-top').show('drop', 500)
+                } else {
+                    $('.scrollToTop').fadeOut();
+                    //$('#generer').hide('drop', 500)
+                }
+            });
+
+            //Click event to scroll to top
+            $('.scrollToTop').click(function(event){
+                event.preventDefault();
+                $('html, body').animate({scrollTop : 0},800);
+                return false;
+            });
+        }
+        scroller();
+    });
+    </script>
+  </body>
+</html>

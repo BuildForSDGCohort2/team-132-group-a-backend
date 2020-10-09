@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="<%= language.language %>">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon">
+
+    <title><%= language.sign_up %></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../dist/css/roboto.ttf">
+    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <link href="../dist/css/bootstrap-material-design.css" rel="stylesheet">
+    <link href="../dist/css/ripples.min.css" rel="stylesheet">
+    <link href="../dist/css/iconfont/material-icons.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+  <div class="container">
+  
+      <form class="form-signin" action="/signup" method="post">
+        <% if (message.length > 0) { %>
+          <div class="alert alert-dismissible alert-danger">
+           <button type="button" class="close" data-dismiss="alert">×</button>
+            <p><i class="material-icons" style="color:#fff;" aria-hidden="true">close</i> <%= message %></p>
+          </div>
+        <% } %>
+        <h2 class="form-signin-heading"><i class="material-icons" style="color:#543b79;" aria-hidden="true">add_circle</i><%= language.sign_up %></h2>
+
+        <label for="inputEmail" class="sr-only"><%= language.name_placeholder %></label>
+        <input type="text" id="inputName" name="name" class="form-control" placeholder="<%= language.name_placeholder %>" required autofocus>
+
+        <label for="inputEmail" class="sr-only"><%= language.last_name_placeholder %></label>
+        <input type="text" id="inputLastName" name="lastname" class="form-control" placeholder="<%= language.last_name_placeholder %>" required autofocus>
+
+        <label for="inputEmail" class="sr-only"><%= language.email_placeholder %></label>
+        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="<%= language.email_placeholder %>" required autofocus>
+
+        <label for="inputEmail" class="sr-only"><%= language.country_placeholder %></label>
+        <input type="text" id="inputCountry" name="country" class="form-control" placeholder="<%= language.country_placeholder %>" required autofocus>
+
+        <label for="inputEmail" class="sr-only"><%= language.date_birth_placeholder %></label>
+        <input type="text" id="inputDate" name="date" class="form-control" placeholder="<%= language.date_birth_placeholder %>" required autofocus>
+
+        <label for="inputEmail" class="sr-only"><%= language.place_birth_placeholder %></label>
+        <input type="text" id="inputPlace" name="place" class="form-control" placeholder="<%= language.place_birth_placeholder %>" required autofocus>
+
+        <label for="inputPassword" class="sr-only"><%= language.password_placeholder %></label>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="<%= language.password_placeholder %>" required>
+
+        <div class="form-group label-floating">
+          <input class="form-control" id="focusedInput2" type="password" placeholder="<%= language.confirm_password_placeholder %>" required>
+          <p class="help-block" id="confirm_password_help"></p>
+        </div>
+
+        <input type="hidden" value="<%= language.language %>" name="language" id="page_language">
+
+        <button class="btn btn-raised btn-primary btn-block" type="submit"><%= language.sign_up %></button>
+        <p>
+          <%= language.already_have_account%> <a href="/<%= link.sign_in_link %>"> <%= language.sign_in %></a>
+        </p>
+
+      </form>
+
+    </div> <!-- /container -->
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-xs-right"><a href="<%= link.home_link %>" class="btn btn-raised btn-primary btn-block"><i class="material-icons" style="color:#fff;" aria-hidden="true">home</i> <%= language.back_home %></a></p>
+        <p><i class="material-icons" style="color:#543b79;margin-top:-2px;float:left;" aria-hidden="true">copyright</i> <%= annee %> ToSala, Inc. &middot; <a href="#"><%= language.privacy_text%></a> &middot; <a href="#"><%= language.terms_text%></a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/vendor/jquery.min.js"></script>
+    <script src="../assets/js/vendor/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="../dist/js/material.js"></script>
+    <script src="../dist/js/ripples.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="../dist/js/replace-diacritics.js"></script>
+    <script src="../dist/js/sign_up.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $.material.init();
+    });
+    </script>
+  </body>
+</html>

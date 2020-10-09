@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="<%= language.language %>" session="<%= sessionTag %>">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon">
+
+    <title><%= language.overview_text %></title>
+
+    <!-- Bootstrap core CSS -->
+    <!--<link href="../../../dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../css/materialize.min.css" rel="stylesheet">-->
+
+    <link rel="stylesheet" href="/css_js/bootstrap.css">
+    <link href="/css_js/materialize.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../../../dist/css/roboto.ttf">
+    <link href="../../../css/carousel.css?2" rel="stylesheet">
+    <link href="../../../dist/css/ripples.min.css" rel="stylesheet">
+    <link href="../../../dist/css/pagination.css" rel="stylesheet">
+    <link href="../../../dist/css/iconfont/material-icons.css" rel="stylesheet">
+    <link href="../../../dist/css/style.css" rel="stylesheet">
+    <link href="../../../css/dashboard.css?1023" rel="stylesheet">
+  </head>
+
+  <body>
+
+  <nav class="white navbar-fixed-top" role="navigation" id="header_header">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="<%= link.home_link %>" class="brand-logo"><img style="float:left;margin-top:6px;" src="/brand"  width="50" height="50"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/<%= link.link_home_link %>" class="nav-link"><i class='material-icons left'>link</i><%= language.top_bar_link %></a></li>
+        <li><a href="/<%= link.forum_home_link %>" class="nav-link"><i class="material-icons left">forum</i><%= language.top_bar_forum %></a></li>
+        <li><a href="/<%= link.project_home_link %>" class="nav-link"><i class='material-icons left'>folder_open</i><%= language.top_bar_projects %></a></li>
+        <li><a href="/<%= link.security %>" class="nav-link"><i class="material-icons left">search</i><%= language.search_text %></a></li>
+        <!--<li><a class="nav-link dropdown-trigger" href="<%= link.society %>" id="pl" data-activates="dropdown">Société<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="<%= link.sport %>" class="nav-link">Sport</a></li>
+            <li><a href="<%= link.enquete %>" class="nav-link">Enquête</a></li>
+            <li><a href="<%= link.analyse %>" class="nav-link">Analyse</a></li> -->
+        <% if (sessionTag) { %>
+          <% if (isAdmin !== null) { %>
+            <% if (isFollowing) { %>
+              <% if (isAdmin.enabled === 1) { %>
+                <li><a href="/<%= link.security %>" class="nav-link"><i class="material-icons left">settings</i><%= language.setting_text %></a></li>
+              <% } %>
+            <% } %>
+          <% } %>
+        <% } %>
+
+        <% if (!sessionTag) { %>
+          <li><a href="/<%= link.connected_link %>" class="nav-link" rel="nofollow"><i class='material-icons left'>lock</i><%= language.sign_in %></a></li>
+          <li><a href="/<%= link.sign_up_link %>" class="nav-link" rel="nofollow"><i class='material-icons left'>add_circle</i><%= language.sign_up %></a></li>
+
+        <% } else { %>
+          <li><a href="/<%= link.connected_link %>" class="nav-link" rel="nofollow"><img style="float:left;margin-top:18px;margin-right:2px;border-radius:50%;border-style: solid; border-width: 1px; border-color: white;" src="/profil" width="25" height="25"><%= accueil %></a></li>
+          <!--<a style="font-size:20px;" href="/<%= link.connected_link %>" id="pop" class="header-color">
+                    <img style="float:left;margin-top:8px;margin-right:2px;border-radius:50%;border-style: solid; border-width: 1px; border-color: white;" src="/profil" width="25" height="25"> <font style="float:right;margin-top:5px;"> <%= accueil %></font>
+                </a> -->
+        <% } %>
+
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="/<%= link.link_home_link %>" class="nav-link"><i class='material-icons left'>link</i><%= language.top_bar_link %></a></li>
+        <li><a href="/<%= link.forum_home_link %>" class="nav-link"><i class="material-icons left">forum</i><%= language.top_bar_forum %></a></li>
+        <li><a href="/<%= link.project_home_link %>" class="nav-link"><i class='material-icons left'>folder_open</i><%= language.top_bar_projects %></a></li>
+        <li><a href="/<%= link.security %>" class="nav-link"><i class="material-icons left">search</i><%= language.search_text %></a></li>
+        <% if (sessionTag) { %>
+          <% if (isAdmin !== null) { %>
+            <% if (isFollowing) { %>
+              <% if (isAdmin.enabled === 1) { %>
+                <li><a href="/<%= link.security %>" class="nav-link"><i class="material-icons left">settings</i><%= language.setting_text %></a></li>
+              <% } %>
+            <% } %>
+          <% } %>
+        <% } %>
+        <% if (!sessionTag) { %>
+          <li><a href="/<%= link.connected_link %>" class="nav-link" rel="nofollow"><i class='material-icons left'>lock</i><%= language.sign_in %></a></li>
+          <li><a href="/<%= link.sign_up_link %>" class="nav-link" rel="nofollow"><i class='material-icons left'>add_circle</i><%= language.sign_up %></a></li>
+        <% } else { %>
+          <li><a href="/<%= link.connected_link %>" class="nav-link" rel="nofollow"><img style="float:left;margin-top:10px;margin-right:2px;border-radius:50%;border-style: solid; border-width: 1px; border-color: white;" src="/profil" width="25" height="25"><%= accueil %></a></li>
+        <% } %>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <!--<nav class="navbar navbar-dark navbar-fixed-top bg-inverse" style="background-color:#FFFFFF;margin: 0 !important;">
+    <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="<%= link.home_link %>"> <img style="float:left;margin-top:6px;" src="/brand" width="25" height="20"> <i>ToSala</i></a>
+    <div id="navbar">
+      <nav class="nav navbar-nav pull-xs-left">
+        <a class="nav-item nav-link" href="/<%= link.link_home_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>link</i><%= language.top_bar_link %></a>
+          <% if (!sessionTag) { %>
+        <a class="nav-item nav-link" href="/<%= link.connected_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>dashboard</i><%= language.top_bar_workspace %></a>
+          <% } %>
+        <a class="nav-item nav-link" href="/<%= link.forum_home_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>forum</i><%= language.top_bar_forum %></a>
+        <a class="nav-item nav-link" tag="project" href="/<%= link.project_home_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>folder_open</i><%= language.top_bar_projects %></a>
+          <% if (sessionTag) { %>
+            <% if (isAdmin !== null) { %>
+              <% if (isFollowing) { %>
+                <% if (isAdmin.enabled === 1) { %>
+        <a class="nav-item nav-link" href="/<%= link.connected_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>settings</i><%= language.setting_text %></a>
+                <% } %>
+              <% } %>
+            <% } %>
+          <% } %>
+      </nav>
+
+      <form class="pull-xs-right">
+          <% if (!sessionTag) { %>
+        <a style="font-size:20px;" href="/<%= link.connected_link %>" class="header-color"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>lock</i>
+          <span> <%= language.sign_in %></span>
+        </a><b><span style="font-size:20px; color: #CCCCCC; ">|</span></b>
+        <a style="font-size:20px;" href="/<%= link.sign_up_link %>" class="header-color"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>vpn_key</i>
+          <span> <%= language.sign_up %></span>
+        </a>
+          <% } else { %>
+        <a style="font-size:20px;" href="/<%= link.connected_link %>" id="pop" class="header-color">
+          <img style="float:left;margin-top:8px;margin-right:2px;border-radius:50%;border-style: solid; border-width: 1px; border-color: white;" src="/profil" width="25" height="25"> <span
+                  style="float:right;margin-top:5px;"> <%= accueil %></span>
+        </a>
+          <% } %>
+      </form>
+    </div>
+  </nav> -->
+
+  <div class="container">
+
+    </div> <!-- /container -->
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing" style="margin-top: 13px;">
+      <div class="panel panel-default" id="project_summary_view" style="padding: 5px;">
+        <div class="cardview_custom" id="current">
+        <% if (sessionTag) { %>
+          <% if (isFollowing) { %>
+            <button type="button" class="btn btn-raised btn-primary" id="unfollow_task" comId="<%= communityInfo.id %>" style="color:white;float:right;">
+                <span><%= language.unfollow_text %></span>
+            </button>
+          <% } else { %>
+            <button type="button" class="btn btn-raised btn-primary" id="follow_task" comId="<%= communityInfo.id %>" style="color:white;float:right;">
+                <span><%= language.follow_text %></span>
+            </button>
+          <% } %>
+        <% } %>
+          <h1 class="panel-title" style="padding-left: 2px;padding-top: 2px;"><i class="material-icons" style="margin-top: -5px;color:#543b79;">group_work</i><%= communityInfo.nom %></h1>
+          <div class="row">
+            <div class="col-lg-2">
+              <img class="img-circle" id="group_icon" src="/brand" alt="Generic placeholder image" width="140" height="140">
+            </div>
+            <div class="col-lg-8" id="project_summary_view_info"></div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-lg-4" style="text-align: left;" align="left">
+              <h2 class="panel-title" align="left">
+                <i class="material-icons" style="color:#543b79;" aria-hidden="true">view_list</i>
+                  <%= language.tags_text %>
+              </h2>
+              <% if (communityInfo.tags.length > 0) { %>
+              <div class="row">
+              <div class="col-lg-8">
+                <% for(var i = 0; i < communityInfo.tags.length; i++) { %>
+                  <a href="/hashtag/<%= communityInfo.tags[i]%>" class="badge"><%= communityInfo.tags[i].toUpperCase() %></a>
+                <% } %>
+                </div>
+              </div>
+              <% } %>
+            </div>
+            <div class="col-lg-8 col-lg-offset-4" align="left" id="project_file_view">
+              <h2 class="panel-title">
+                <i class="material-icons" style="color:#543b79;" aria-hidden="true">view_list</i>
+                  <%= language.stats_text %>
+              </h2>
+              <div class="col-lg-4">
+                <h6 class="panel-title">
+                  <i class="material-icons" style="color:#543b79;position: relative;top:5px;" aria-hidden="true">star</i>
+                    <%= language.activity_text %> <span class="text-info">142</span>
+                </h6>
+                <h6 class="panel-title">
+                  <i class="material-icons" style="color:#543b79;position: relative;top:5px;" aria-hidden="true">star</i>
+                    <%= language.like_text %> <span class="text-info"><%= communityInfo.votes %></span>
+                </h6>
+              </div>
+              <div class="col-lg-4 col-lg-offset-4">
+                <h6 class="panel-title">
+                  <i class="material-icons" style="color:#543b79;position: relative;top:5px;" aria-hidden="true">star</i>
+                    <%= language.follower_text %> <span class="text-info"><%= communityInfo.followers %></span>
+                </h6>
+                <h6 class="panel-title">
+                  <i class="material-icons" style="color:#543b79;position: relative;top:5px;" aria-hidden="true">star</i>
+                    <%= language.comments_text %> <span class="text-info"><%= communityInfo.nbrComments %></span>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <h1 class="panel-title" style="padding-left: 2px;padding-top: 2px;"><i class="material-icons" style="margin-top: -5px;color:#543b79;">view_list</i>
+              <%= language.latest_articles_text %>
+          </h1>
+          <br>
+          <% if (sessionTag) { %>
+            <% if (isAdmin !== null) { %>
+              <% if (isFollowing) { %>
+                <% if (isAdmin.enabled === 1) { %>
+                  <div class="row" style="padding-left: 5px;">
+                    <div class="col-lg-6">
+                      <div class="panel panel-default" id="prfil_presentation" align="left" style="background-color:#fff!important;padding: 2px;margin-top:3px!important;">
+                        <input type="text" id="title_article" placeholder="<%= language.title_publishing_article %>" class="form-control" required autofocus>
+                        <textarea class="form-control" rows="3" placeholder="<%= language.write_something_text %>" id="article_text"></textarea>
+                        <input type="file" id="image_upload" accept="image/*" style="display: none;">
+                        <button type="button" class="btn btn-sm btn-raised btn-primary" id="image_file"><i class="material-icons" style="color:#FFF;margin-top:-2px;" aria-hidden="true">photo_camera</i></button>
+                        <button type="button" class="btn btn-sm btn-raised btn-primary" id="publish" style="color:white;" comId="<%= communityInfo.id %>"><i class="material-icons" style="color:#fff;margin-top:-2px;" aria-hidden="true">publish</i> <%= language.publish_button %></button>
+                        <div>
+                          <img title="#" alt="" src="/images/city.jpg" class="img-thumbnail" id="target_img" style="display: none; height: 200px!important;" width="200" height="650">
+                        <button id="delete_temp_image" type="button" class="btn  btn-fab btn-fab-mini btn-primary btn-sm" style='background-color: rgba(255, 255, 255, 0.5)!important; top:-195px;left:155px; display: none;'>
+                          <i class='material-icons' style='color:rgba(255, 255, 255, 0.5);'>close</i>
+                        </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    <hr>
+                <% } %>
+              <% } %>
+            <% } %>
+          <% } %>
+            <div class="row" style="padding-left: 5px;">
+              <div class="col-lg-8" id="latest_articles_id"></div>
+            </div>
+          <!--<div class="row">
+            <div class="col-lg-4" id="project_list_file_view_info">
+              <ul id="project_folder_list" style="list-style: none;">
+                <li class="disabled"><i class="material-icons" style="float: left;color:#543b79;">folder</i> root</li>
+              </ul>
+            </div>
+            <div class="col-lg-8" id="project_file_view_info">
+                  <pre>
+                    Diskenda
+                  </pre>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+    </div><!-- /.container -->
+
+  <a href="#" class="scrollToTop"><i class="material-icons" aria-hidden="true">keyboard_arrow_up</i></a>
+  <div class="row custom-back" style="margin:0px;margin-top: 3px;">
+    <div class="col-md-4">
+      <hr class="featurette-dividers">
+      <h3 class="block-title no-underline"><span class="text-primary" style="color: #543b79!important;font-weight: bold;font-size: 20px;">ToSala</span></h3>
+      <div class="block-content">
+        <p>Tosala  Inc. brought to you as a result of the 2020 Andela & facebook Build for SDG Innovators challenge</p>
+            <img class="footer-logo" src="../../../images/logo.png" alt="" width="80" height="72" /> </div>
+      <p style="margin-top:2px;">
+        <i class="material-icons" style="margin-top:-2px;float:left;" aria-hidden="true">copyright</i><font style=""><%= annee %> ToSala, Inc.</font>
+        <!--&middot;<br>
+        <a href="#" style="color:#000;">Privacy</a> &middot; <a href="#" style="color:#000;">Terms</a>-->
+      </p>
+    </div>
+    <div class="col-md-3" align="center">
+      <hr class="featurette-dividers">
+      <a href="javascript:void(0);" class="btn btn-sm btn-link" style="color: #636363!important;"><%= language.privacy_text%></a> &middot;
+      <a href="javascript:void(0);" class="btn btn-sm btn-link" style="color: #636363!important;"><%= language.terms_text%></a>&middot;
+      <a href="javascript:void(0);" class="btn btn-sm btn-link" style="color: #636363!important;"><%= language.bottom_link %></a>
+    </div>
+    <div class="col-md-2">
+      <hr class="featurette-dividers">
+      <p>
+        <a href="/<%= link.dashboard_forum_home_link %>/<%= link.forum_overview_link %>/<%= communityInfo.id %>" class="footer-lng">
+          <img src="../../../images/en.gif" width="20" height="15"> English</a>
+        |
+        <a href="/fr/<%= link.dashboard_forum_home_link %>/<%= link.forum_overview_link %>/<%= communityInfo.id %>" class="footer-lng">
+          <img src="../../../images/fr.png" width="20" height="15"> Français</a>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <hr class="featurette-dividers">
+      <!-- FOOTER -->
+      <a href="javascript:void(0);"><img src="../../../images/logoi.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../../../images/logoin.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../../../images/logos.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../../../images/logot.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../../../images/logog.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../../../images/logofb.png" width="30" height="30"></a>
+      <a href="javascript:void(0);"><img src="../../../images/logoy.png" width="30" height="30"></a>
+    </div>
+  </div>
+  <input type="hidden" value="<%= communityInfo.id %>" id="hidden_id">
+
+  <!-- Bootstrap core JavaScript
+ ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="../../../assets/js/vendor/jquery.min.js"></script>
+  <script src="../../../dist/js/jquery-ui.min.js"></script>
+  <script src="../../../assets/js/vendor/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+  <script src="../../../dist/js/bootstrap.min.js"></script>
+  <script src="../../../dist/js/materialize.min.js"></script>
+  <script src="../../../dist/js/ripples.min.js"></script>
+  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+  <script src="../../../assets/js/vendor/holder.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="../../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="../../../dist/js/replace-diacritics.js"></script>
+  <script src="../../../dist/js/init.js?2"></script>
+  <script src="../../../dist/js/netic.js?2"></script>
+  <script src="../../../dist/js/community_overview.js?302127"></script>
+  <script src="../../../dist/js/jcompress.js?132"></script>
+  <script type="text/javascript">
+      $(document).ready(function(){
+          //$.material.init();
+          $badge = $('.badge');
+          $badge.mouseover(function(){
+              $(this).animate({
+                  backgroundColor: '#543b79',
+                  color:'#fff',
+                  borderColor: '#543b79'
+              }, 200);
+          });
+          $badge.mouseout(function(){
+              $(this).animate({
+                  backgroundColor: '#FFFFFF',
+                  color:'#272727',
+                  borderColor: '#ebebeb'
+              }, 200);
+          });
+          $('.scrollToTop').mouseover(function(){
+              $('.scrollToTop').animate({
+                  backgroundColor: '#543b79',
+                  color:'#d1caca',
+                  borderColor: '#543b79'
+              }, 200);
+          });
+          $('.scrollToTop').mouseout(function(){
+              $('.scrollToTop').animate({
+                  backgroundColor: 'transparent',
+                  color:'#543b79',
+                  borderColor: '#543b79'
+              }, 200);
+          });
+          $('#serach').on('click', function(event){
+              event.preventDefault();
+              if($('#searching_nav').is(':visible')){
+                  //alert('true')
+                  //$('#searching_nav').slideUp('slow');
+                  $('#searching_nav').slideUp('slow', function(){
+                      //alert('true')
+                      //$('#searching_nav').show('slide');
+                  });
+              }else{
+                  //alert('false')
+                  $('#searching_nav').slideDown('slow', function(){
+                      //alert('true')
+                      //$('#main_nav').show('slide');
+                      $(this).animate({
+                          'margin-top':'25px'
+                      }, 1000, function(){
+                          //alert('terminé');
+                      });
+                  });
+              }
+          });
+          function scroller () {
+              // body...
+              //$('.scrollToTop, a').tooltip({ placement:'bottom' });
+              $(window).scroll(function(){
+                  if ($(this).scrollTop() > 100) {
+                      $('.scrollToTop').fadeIn();
+                      //$('.cd-top').show('drop', 500)
+                  } else {
+                      $('.scrollToTop').fadeOut();
+                      //$('#generer').hide('drop', 500)
+                  }
+              });
+
+              //Click event to scroll to top
+              $('.scrollToTop').click(function(event){
+                  event.preventDefault();
+                  $('html, body').animate({scrollTop : 0},800);
+                  return false;
+              });
+          }
+          scroller();
+      });
+  </script>
+  </body>
+</html>

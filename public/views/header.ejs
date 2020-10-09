@@ -1,0 +1,52 @@
+
+<nav class="white navbar-fixed-top" role="navigation" id="header_header">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="<%= link.home_link %>" class="brand-logo"><img style="float:left;margin-top:6px;" src="/brand"  width="50" height="50"></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/<%= link.link_home_link %>" class="nav-link"><i class='material-icons left'>link</i><%= language.top_bar_link %></a></li>
+            <li><a href="/<%= link.forum_home_link %>" class="nav-link"><i class="material-icons left">forum</i><%= language.top_bar_forum %></a></li>
+            <li><a href="/<%= link.project_home_link %>" class="nav-link"><i class='material-icons left'>folder_open</i><%= language.top_bar_projects %></a></li>
+            <li><a href="/<%= link.link_home_search %>" class="nav-link"><i class="material-icons left">search</i><%= language.search_text %></a></li>
+            <!--<li><a class="nav-link dropdown-trigger" href="<%= link.society %>" id="pl" data-activates="dropdown">Société<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="<%= link.sport %>" class="nav-link">Sport</a></li>
+            <li><a href="<%= link.enquete %>" class="nav-link">Enquête</a></li>
+            <li><a href="<%= link.analyse %>" class="nav-link">Analyse</a></li> -->
+            <% if (sessionTag === false) { %>
+                <li><a href="/<%= link.connected_link %>" class="nav-link" rel="nofollow"><i class='material-icons left'>lock</i><%= language.sign_in %></a></li>
+                <li><a href="/<%= link.sign_up_link %>" class="nav-link" rel="nofollow"><i class='material-icons left'>add_circle</i><%= language.sign_up %></a></li>
+
+            <% } else { %>
+                <li><a href="/<%= link.connected_link %>" class="nav-link" rel="nofollow"><img style="float:left;margin-top:18px;margin-right:2px;border-radius:50%;border-style: solid; border-width: 1px; border-color: white;" src="/profil" width="25" height="25"><%= accueil %></a></li>
+                <!--<a style="font-size:20px;" href="/<%= link.connected_link %>" id="pop" class="header-color">
+                    <img style="float:left;margin-top:8px;margin-right:2px;border-radius:50%;border-style: solid; border-width: 1px; border-color: white;" src="/profil" width="25" height="25"> <font style="float:right;margin-top:5px;"> <%= accueil %></font>
+                </a> -->
+            <% } %>
+
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="/<%= link.link_home_link %>" class="nav-link"><i class='material-icons left'>link</i><%= language.top_bar_link %></a></li>
+            <li><a href="/<%= link.forum_home_link %>" class="nav-link"><i class="material-icons left">forum</i><%= language.top_bar_forum %></a></li>
+            <li><a href="/<%= link.project_home_link %>" class="nav-link"><i class='material-icons left'>folder_open</i><%= language.top_bar_projects %></a></li>
+            <li><a href="/<%= link.security %>" class="nav-link"><i class="material-icons left">search</i><%= language.search_text %></a></li>
+            <% if (sessionTag === false) { %>
+                <li><a href="/<%= link.connected_link %>" class="nav-link" rel="nofollow"><i class='material-icons left'>lock</i><%= language.sign_in %></a></li>
+                <li><a href="/<%= link.sign_up_link %>" class="nav-link" rel="nofollow"><i class='material-icons left'>add_circle</i><%= language.sign_up %></a></li>
+            <% } else { %>
+                <li><a href="/<%= link.connected_link %>" class="nav-link" rel="nofollow"><img style="float:left;margin-top:10px;margin-right:2px;border-radius:50%;border-style: solid; border-width: 1px; border-color: white;" src="/profil" width="25" height="25"><%= accueil %></a></li>
+            <% } %>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+<nav class="netic navbar-fixed-top" id="search_header" style="display: none;">
+    <div class="nav-wrapper">
+        <form action="/searching/article" method="post">
+            <div class="input-field">
+                <input id="search" type="search" name="searching" required>
+                <label class="label-icon" for="search"><i class="material-icons left">search</i></label>
+                <i class="material-icons" id="close_search">close</i>
+            </div>
+        </form>
+    </div>
+</nav>

@@ -1,0 +1,64 @@
+/**
+*Typeahead CSS
+*/
+.typeahead, .tt-query, .tt-hint {
+	width:100%; 
+	border: 2px solid #CCCCCC;
+	border-radius: 8px;
+	height: 38px;
+	line-height: 1.42857143px;
+	font-size: 16px!important;
+	outline: medium none;
+	padding: 10px 7px!important;
+	margin-top:2px; 
+}
+.typeahead {
+	background-color: #FFFFFF;
+}
+.typeahead:focus {
+	border: 2px solid #543b79;
+}
+.tt-query {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+	color: #999999;
+}
+.tt-dropdown-menu {
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 12px;
+	padding: 8px 0;
+	width: 100%;
+}
+.tt-suggestion {
+	font-size: 24px;
+	line-height: 24px;
+	padding: 3px 20px;
+}
+.tt-suggestion.tt-is-under-cursor {
+	background-color: #543b79;
+	color: #FFFFFF;
+}
+.tt-suggestion p {
+	margin: 0;
+}
+#tags_input { 
+	border:2px; 
+	border-color:transparent; 
+	margin-top:2px; 
+	width:100%!important; 
+	border-radius: 8px;
+	border-bottom-color:#CCC; 
+	border-bottom-style:outset; 
+	border-bottom-width:thin;
+	border: 2px solid #CCCCCC;
+	border-radius: 8px;
+	height: 38px;
+	line-height: 1.42857143px;
+	font-size: 16px!important;
+	outline: medium none;
+	padding: 7px 9px!important;
+}

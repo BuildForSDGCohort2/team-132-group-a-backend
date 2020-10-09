@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon">
+
+    <title><%= language.error_404_title %></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../../dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../../../../dist/css/roboto.ttf">
+    <link href="../../../../css/dashboard.css" rel="stylesheet">
+    <link href="../../../../css/carousel.css" rel="stylesheet">
+    <link href="../../../../dist/css/bootstrap-material-design.css" rel="stylesheet">
+    <link href="../../../../dist/css/ripples.min.css" rel="stylesheet">
+    <link href="../../../../dist/css/iconfont/material-icons.css" rel="stylesheet">
+  </head>
+
+<body>
+
+<nav class="navbar navbar-dark navbar-fixed-top bg-inverse" style="color:#543b79 !important;background-color:#FFFFFF !important;display:none;" id="searching_nav">
+      <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div id="navbar">
+        <input class="form-control" id="searching_input_value" type="text" placeholder="<%= language.top_bar_search %>">
+      </div>
+    </nav>
+
+<nav class="navbar navbar-dark navbar-fixed-top bg-inverse" style="background-color:#FFFFFF;">
+  <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <span class="sr-only"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="#"> <img style="float:left;margin-top:6px;" src="/brand" width="25" height="20"> <i>ToSala</i></a>
+  <div id="navbar">
+    <nav class="nav navbar-nav pull-xs-left">
+      <a class="nav-item nav-link" href="#"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>link</i><%= language.top_bar_link %></a>
+          <% if (sessionTag == 'false') { %>
+          <a class="nav-item nav-link" href="/<%= link.connected_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>dashboard</i><%= language.top_bar_workspace %></a>
+          <% } %>
+          <a class="nav-item nav-link" href="#"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>forum</i><%= language.top_bar_forum %></a>
+          <a class="nav-item nav-link" href="#" id="serach"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>search</i><%= language.top_bar_search %></a>
+    </nav>
+    <form class="pull-xs-right">
+      <% if (sessionTag == 'false') { %>
+      <a style="font-size:25px;" href="/<%= link.connected_link %>" class="header-color">
+        <font> <%= language.sign_in %></font>
+      </a><b><font style="font-size:25px;" color="#CCCCCC">|</font></b>
+      <a style="font-size:25px;" href="/<%= link.sign_up_link %>" class="header-color">
+        <font> <%= language.sign_up %></font>
+      </a>
+      <% } else { %>
+      <a style="font-size:25px;" href="/<%= link.connected_link %>" id="pop" class="header-color">
+        <img style="float:left;margin-top:8px;margin-right:2px;border-radius:50%;border-style: solid; border-width: 1px; border-color: white;" src="/profil" width="25" height="25"> <font> <%= accueil %></font>
+      </a>
+      <% } %>
+    </form>
+  </div>
+</nav>
+<div class="container marketing">
+
+
+<div class="form-signin">
+<h2 class="form-signin-heading"><i class="material-icons" style="color:#543b79;" aria-hidden="true">error_outline</i><%= language.error_404_title %></h2>
+<canvas id="myCanvas" width="400" height="300" style="border:1px solid black;">   
+ Votre navigateur ne supporte pas canvas. </canvas> 
+<p><i class="material-icons" style="color:#543b79;" aria-hidden="true">error</i><%= language.error_404_text %></p>
+</div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-xs-right"><a href="<%= link.home_link %>" class="btn btn-raised btn-primary btn-block"><i class="material-icons" style="color:#fff;" aria-hidden="true">home</i> <%= language.back_home %></a></p>
+        <p><i class="material-icons" style="color:#543b79;margin-top:-2px;float:left;" aria-hidden="true">copyright</i> <%= annee %> ToSala, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../assets/js/vendor/jquery.min.js"></script>
+    <script src="../../../../assets/js/vendor/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="../../../../dist/js/material.js"></script>
+    <script src="../../../../dist/js/ripples.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../../../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+    <script src="../../../../dist/js/replace-diacritics.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $.material.init();
+      $('#serach').on('click', function(event){
+        event.preventDefault();
+        if($('#searching_nav').is(':visible')){
+          //alert('true')
+          //$('#searching_nav').slideUp('slow');
+          $('#searching_nav').slideUp('slow', function(){
+            //alert('true')
+            //$('#searching_nav').show('slide');
+          });
+        }else{
+          //alert('false')
+          $('#searching_nav').slideDown('slow', function(){
+            //alert('true')
+            //$('#main_nav').show('slide');
+            $(this).animate({
+              'margin-top':'25px'
+            }, 1000, function(){
+              //alert('terminé');
+            });
+          });
+        }
+      });
+      var canvas = document.getElementById("myCanvas");    
+      if(!canvas)    {      
+        alert("Impossible de récupérer le canvas");        
+        return;   
+      }
+      var context = canvas.getContext("2d");    
+      if(!context)    {        
+        alert("Impossible de récupérer le context");        
+        return;    
+      }
+      context.beginPath();
+      var linear = context.createLinearGradient(0, 0, 0, 500); 
+      linear.addColorStop(0, 'white'); 
+      linear.addColorStop(0.5, '#543b79'); 
+      linear.addColorStop(0.5, '#543b79'); 
+      linear.addColorStop(1, '#543b79'); 
+      context.fillStyle = linear; 
+      context.fillRect(25, 25, 350, 250);
+      context.fill();
+
+      context.font = "68px Roboto,Geneva,Arial";
+      context.fillStyle = "white";
+      context.fillText("404", 150, 175);
+
+      context.font = "50px Roboto,Geneva,Arial";
+      context.fillStyle = "#543b79";
+      context.fillText("ToSala", 110, 68);
+    });
+    </script>
+</body>
+</html>

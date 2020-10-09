@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="<%= language.language %>">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="icon" href="/favicon">
+
+    <title><%= language.sign_in %></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/materialize.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../dist/css/roboto.ttf">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <link href="../dist/css/ripples.min.css" rel="stylesheet">
+    <link href="../dist/css/iconfont/material-icons.css" rel="stylesheet">
+    <link href="../css/dashboard.css?42785" rel="stylesheet">
+    <link href="../dist/css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+  <div class="container">
+
+    <form class="form-signin" action="/get_connected" method="post">
+      <% if (message.length > 0) { %>
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <p><i class="material-icons" style="color:#fff;" aria-hidden="true">close</i> <%= message %></p>
+        </div>
+      <% } %>
+      <h2 class="form-signin-heading"><i class="material-icons" style="color:#543b79;" aria-hidden="true">lock</i><%= language.sign_in %></h2>
+      <div class="input-field col s6">
+        <input id="last_name" type="text" name="email" class="validate" required autofocus>
+        <label for="last_name"><%= language.email_placeholder %></label>
+      </div>
+      <div class="input-field col s12">
+        <input id="password" type="password" name="password" class="validate" required>
+        <label for="password"><%= language.password_placeholder %></label>
+      </div>
+
+      <input type="hidden" value="<%= language.language %>" name="language">
+      <button class="btn btn-raised btn-primary btn-block waves-effect waves-light" type="submit"><%= language.sign_in %></button>
+        <p>
+          <%= language.need_account%> <a href="/<%= link.sign_up_link %>"> <%= language.sign_up %></a>
+        </p>
+    </form>
+  
+
+
+    </div> <!-- /container -->
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-xs-right">
+          <a href="<%= link.home_link %>" class="waves-effect waves-light btn"><i class="material-icons left"  aria-hidden="true">home</i><%= language.back_home %></a>
+        </p>
+        <p>
+          <i class="material-icons" style="color:#543b79;margin-top:3px;float:left;" aria-hidden="true">copyright</i> <%= annee %> ToSala Inc. &middot; <a href="#"><%= language.privacy_text%></a> &middot; <a href="#"><%= language.terms_text%></a>
+        </p>
+      </footer>
+
+    </div><!-- /.container -->
+
+  <!-- Bootstrap core JavaScript
+================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="../assets/js/vendor/jquery.min.js"></script>
+  <script src="../dist/js/jquery-ui.min.js"></script>
+  <script src="../dist/js/materialize.min.js?1"></script>
+  <script src="../assets/js/vendor/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+
+  <script src="../dist/js/ripples.min.js"></script>
+  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+  <script src="../assets/js/vendor/holder.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="../dist/js/RequestHandler.js?2"></script>
+
+  <script src="../dist/js/init.js?2"></script>
+  <script src="../dist/js/replace-diacritics.js"></script>
+  <script src="../dist/js/netic.js?2"></script>
+  <script type="text/javascript">
+      $(document).ready(function(){
+          //$.material.init();
+      });
+  </script>
+  </body>
+</html>

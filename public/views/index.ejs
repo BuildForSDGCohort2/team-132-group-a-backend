@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="<%= language.language %>">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="keywords" content="Workspace, Working space, ToSala">
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="ToSala  Inc">
+    <meta name="og:description" content="<%= language.site_description%>" />
+    <meta property="og:title" content="ToSala">
+    <meta property="og:image" content="/images/logo.png">
+    <link rel="icon" href="/favicon" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon" type="image/x-icon">
+
+    <title><%= language.welcome_title_text %></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/materialize.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../dist/css/roboto.ttf">
+    <link href="../css/carousel.css?2" rel="stylesheet">
+    <link href="../dist/css/ripples.min.css" rel="stylesheet">
+    <link href="../dist/css/pagination.css" rel="stylesheet">
+    <link href="../dist/css/iconfont/material-icons.css" rel="stylesheet">
+    <link href="../css/dashboard.css?1023" rel="stylesheet">
+    <link href="../dist/css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+
+  <div id="loader">
+      <div class="position-center-center">
+          <img src="../images/logo.png" alt="">
+          <p class="text-center"><%= language.loading_text %></p>
+          <div class="preloader-wrapper small active">
+              <div class="spinner-layer spinner-black-only">
+                  <div class="circle-clipper left">
+                      <div class="circle"></div>
+                  </div><div class="gap-patch">
+                      <div class="circle"></div>
+                  </div><div class="circle-clipper right">
+                      <div class="circle"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <%- include ('header')-%>
+    <!--<nav class="navbar navbar-dark navbar-fixed-top bg-inverse" style="background-color:#FFFFFF;margin: 0 !important;">
+      <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= link.home_link %>"> <img style="float:left;margin-top:6px;" src="/brand" width="25" height="20"> <i>ToSala</i></a>
+      <div id="navbar">
+        <nav class="nav navbar-nav pull-xs-left">
+          <a class="nav-item nav-link" href="<%= link.link_home_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>Home</i><%= language.top_bar_link %></a>
+          <% if (sessionTag == 'false') { %>
+          <a class="nav-item nav-link" href="/<%= link.connected_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>dashboard</i><%= language.top_bar_workspace %></a>
+          <% } %>
+          <a class="nav-item nav-link" href="<%= link.forum_home_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>forum</i><%= language.top_bar_forum %></a>
+          <a class="nav-item nav-link" tag="project" href="<%= link.project_home_link %>"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>folder_open</i><%= language.top_bar_projects %></a>
+        </nav>
+
+        <form class="pull-xs-right">
+          <% if (sessionTag == 'false') { %>
+          <a style="font-size:20px;" href="/<%= link.connected_link %>" class="header-color"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>lock</i>
+            <font> <%= language.sign_in %></font>
+          </a><b><font style="font-size:20px;" color="#CCCCCC">|</font></b>
+          <a style="font-size:20px;" href="/<%= link.sign_up_link %>" class="header-color"><i class='material-icons' style='margin-top:-3px;color:rgba(255, 255, 255, 0.5);'>vpn_key</i>
+            <font> <%= language.sign_up %></font>
+          </a>
+          <% } else { %>
+          <a style="font-size:20px;" href="/<%= link.connected_link %>" id="pop" class="header-color">
+            <img style="float:left;margin-top:8px;margin-right:2px;border-radius:50%;border-style: solid; border-width: 1px; border-color: white;" src="/profil" width="25" height="25"> <font style="float:right;margin-top:5px;"> <%= accueil %></font>
+          </a>
+          <% } %>
+        </form>
+        <input type="text" id="searchingInput" class="form-control-sm" placeholder="<%= language.top_bar_search %>" size="20" style="margin-left:15px;width:20%;">
+      </div>
+    </nav> -->
+
+  <!-- Carousel
+    ================================================== -->
+  <div class="carousel carousel-slider">
+      <a class="carousel-item" href="#one!"><img src="../images/create-min.jpg"></a>
+      <a class="carousel-item" href="#two!"><img src="../images/project-min.jpg"></a>
+      <a class="carousel-item" href="#three!"><img src="../images/technologie.png"></a>
+      <a class="carousel-item" href="#four!"><img src="../images/code.jpg"></a>
+      <a class="carousel-item" href="#five!"><img src="../images/design-min.jpg"></a>
+      <a class="carousel-item" href="#six!"><img src="../images/work-min.jpg"></a>
+  </div>
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="row" align="center" style="margin: 0;">
+      <h3 class="panel-title" id="headerUpper" style="padding-left: 2px;padding-top: 2px; font-weight: bold;"><%= language.welcome_title_text %></h3>
+      <img class="margin-top-20 margin-bottom-20" src="../images/sm_logo.png" alt="" width="20" height="20">
+      <div class="panel-body marketing" style="padding-left: 8px;max-width: 900px;">
+        In Tosala, get opportunity to remotely work with your team on different projects.
+        Create an account by simply signing up and start right away by either joining an existing project or creating your very own, 
+        join a community of minded people like you and get to work.
+        Student are more welcome to collaborate on their assignment and share unlimited amount of exercises 
+        <br>
+        <br>
+        Get noticed by helping others solving problems and participate in different projects to earn skills.
+        Invite your friends to join your community and have them work on a closed project where no one else will have access but only allowed individual.
+        <br>
+        <br>
+      </div>
+    </div>
+
+
+<!-- Three columns of text below the carousel -->
+      <div class="row bg-parallax fullWidth" style="background:url(../images/desert.jpg) fixed no-repeat;">
+        <div class="row miroir" style="padding: 2px;margin: 0" id="public_project_loader">
+          <h3 class="panel-title" id="subUpper" align="center" style="padding-left: 2px;padding-top: 2px;color: #fff;"><%= language.last_projects %></h3>
+        </div>
+      </div><!-- /.row -->
+
+    <div class="container marketing">
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Learning Opportunity. <span class="text-muted">Forum ready to blow your mind with mindfull ideas</span></h2>
+          <p class="lead">Jump into forum to discuss different matters and solve problems others are facing. <br>
+            You can as well raise a problem that others will help you solve.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-fluid m-x-auto" src="../images/pexel.jpg" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 push-md-5">
+          <h2 class="featurette-heading">Looking for projects to work on?  <span class="text-muted">See for yourself.</span></h2>
+          <p class="lead">Are you short of ideas? well, Tosala is the perfect place for you to get just what you need.
+            With numerous projects coming to live, learn about what a project is about and commit to work on it by joining the project by a single click.<br>
+            Vote for the project that you like and get straight back at it every time you login into your account.
+          </p>
+        </div>
+        <div class="col-md-5 pull-md-7">
+          <img class="featurette-image img-fluid m-x-auto" src="../images/design.jpg" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <div class="row bg-parallax fullWidth heading-border" style="background:url(images/sunset.jpg) fixed no-repeat;padding: 100px;" align="center">
+      <h3 class="text-uppercase white-text font-bold padding-left-40 padding-right-40 padding-top-20 padding-bottom-20 letter-space-1"><%= language.create_project %></h3>
+      <br>
+      <a href="<%= link.project_home_link %>" class="btn btn-sm btn-link font-bold setSize" style="color: #fff!important;"><%= language.start_here_text %></a>
+
+      </div>
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Full of skilled peoples.  <span class="text-muted"> Earn skills through participation</span></h2>
+          <p class="lead">Tosala allow you to get better while participating in different topics. 
+            Getting noticed by solving issues and receiving likes operate as votes and will earn you a skill</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-fluid m-x-auto" src="../images/vote.jpg" alt="Generic placeholder image">
+        </div>
+      </div>
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 push-md-5">
+          <h2 class="featurette-heading">Community of problems solver.   <span class="text-muted">  Be part of a cheerful community</span></h2>
+          <p class="lead">Having a sense of community unites us. Being a part of a community can make us feel as 
+            though we are a part of something greater than ourselves. 
+            It can give us opportunities to connect with people, to reach for our goals, 
+            and makes us feel safe and secure. It's important for every person to have a sense of community</p>
+        </div>
+        <div class="col-md-5 pull-md-7">
+          <img class="featurette-image img-fluid m-x-auto" src="../images/comm.jpg" alt="Generic placeholder image">
+        </div>
+      </div>
+      <a href="#" class="scrollToTop"><i class="material-icons" aria-hidden="true">keyboard_arrow_up</i></a>
+
+      <!-- /END THE FEATURETTES -->
+
+    </div><!-- /.container -->
+    <div class="row bg-parallax fullWidth" style="background:url(images/desert.jpg) fixed no-repeat;">
+      <div class="row miroir" style="padding: 2px;margin: 0">
+      <h3 class="panel-title" id="footerUpper" align="center" style="padding-left: 2px;padding-top: 2px;color: #fff;"><%= language.what_they_say_text %></h3>
+        <div class="col-lg-4" style="color: #fff;" align="center">
+          <img class="img-circle" src="/profil" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <p><a class="btn btn-secondary" href="#" role="button" style="color: #fff;">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4" style="color: #fff;" align="center">
+          <img class="img-circle" src="/profil" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+          <p><a class="btn btn-secondary" href="#" role="button" style="color: #fff;">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4" style="color: #fff;" align="center">
+          <img class="img-circle" src="/profil" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-secondary" href="#" role="button" style="color: #fff;">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div>
+        
+      </div><!-- /.row -->
+
+    <div class="row custom-back" style="margin:0px;margin-top: 3px;">
+    <div class="col-md-4">
+      <hr class="featurette-dividers">
+      <h3 class="block-title no-underline"><span class="text-primary" style="color: #543b79!important;font-weight: bold;font-size: 20px;">ToSala</span></h3>
+          <div class="block-content">
+            <p>Tosala  Inc. brought to you as a result of the 2020 Andela & facebook Build for SDG Innovators challenge</p>
+            <img class="footer-logo" src="images/logo.png" alt="" width="80" height="72" /> </div>
+        <p style="margin-top:2px;">
+          <i class="material-icons" style="margin-top:-2px;float:left;" aria-hidden="true">copyright</i><font style:""><%= annee %> ToSala, Inc.</font>
+          <!--&middot;<br>
+          <a href="#" style="color:#000;">Privacy</a> &middot; <a href="#" style="color:#000;">Terms</a>-->
+        </p>
+        </div>
+        <div class="col-md-3" align="center">
+          <hr class="featurette-dividers">
+          <a href="javascript:void(0);" class="btn btn-sm btn-link" style="color: #636363!important;"><%= language.privacy_text%></a> &middot;
+          <a href="javascript:void(0);" class="btn btn-sm btn-link" style="color: #636363!important;"><%= language.terms_text%></a>&middot;
+          <a href="javascript:void(0);" class="btn btn-sm btn-link" style="color: #636363!important;"><%= language.bottom_link %></a>
+        </div>
+        <div class="col-md-2">
+          <hr class="featurette-dividers">
+          <p>
+          <a href="/" class="footer-lng"><img src="images/en.gif" width="20" height="15"> English</a> | <a href="/fr" class="footer-lng"><img src="images/fr.png" width="20" height="15"> Français</a>
+        </p>
+        </div>
+        <div class="col-md-3">
+          <hr class="featurette-dividers">
+          <!-- FOOTER -->
+          <a href="javascript:void(0);"><img src="images/logoi.png" width="30" height="30"></a>
+          <a href="javascript:void(0);"><img src="images/logoin.png" width="30" height="30"></a>
+          <a href="javascript:void(0);"><img src="images/logos.png" width="30" height="30"></a>
+          <a href="javascript:void(0);"><img src="images/logot.png" width="30" height="30"></a>
+          <!--<a href="javascript:void(0);"><img src="images/logog.png" width="30" height="30"></a>-->
+          <a href="javascript:void(0);"><img src="images/logofb.png" width="30" height="30"></a>
+          <a href="javascript:void(0);"><img src="images/logoy.png" width="30" height="30"></a>
+        </div>
+      </div>
+
+<div id="info-dialog" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="header_text" align="left" style="color:black;">A propos</h4>
+      </div>
+      <div class="modal-body">
+        <p align="center"><img src="images/logo.png" title="ToSala"></p>
+        <p align="center"><font size="+4" face="Roboto,VT-100,terminal,lucida console,courier,system" color="#000"><b>ToSala</b></font></p>
+        <p align="right">
+          <font color="#666"> &copy; <font id="year"><%= annee %></font> ToSala, Inc.</font>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-raised btn-info" id="close" data-dismiss="modal" style="border-color:white;"><%= language.close_text%></button> 
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="../assets/js/vendor/jquery.min.js"></script>
+  <script src="../dist/js/jquery-ui.min.js"></script>
+  <script src="../dist/js/materialize.min.js?1"></script>
+  <script src="../dist/js/pagination.min.js?1"></script>
+  <script src="../assets/js/vendor/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+
+  <script src="../dist/js/ripples.min.js"></script>
+  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+  <script src="../assets/js/vendor/holder.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="../dist/js/RequestHandler.js?2"></script>
+
+  <script src="../dist/js/init.js?2"></script>
+  <script src="../dist/js/replace-diacritics.js"></script>
+  <script src="../dist/js/netic.js?2"></script>
+  <script src="../socket.io/socket.io.js"></script>
+  <script src="../dist/js/index.js?3"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      //$.material.init();
+      $toUpper = $('#headerUpper').html().toUpperCase();
+      $('#headerUpper').html($toUpper);
+      $toUpperS = $('#subUpper').html().toUpperCase();
+      $('#subUpper').html($toUpperS);
+      $('.scrollToTop').mouseover(function(){
+        $('.scrollToTop').animate({
+          backgroundColor: '#543b79',
+          color:'#d1caca',
+          borderColor: '#543b79'
+        }, 200);
+      });
+      $('.scrollToTop').mouseout(function(){
+        $('.scrollToTop').animate({
+          backgroundColor: 'transparent',
+          color:'#543b79',
+          borderColor: '#543b79'
+        }, 200);
+      });
+      $('#serach').on('click', function(event){
+        event.preventDefault();
+        if($('#searching_nav').is(':visible')){
+          //alert('true')
+          //$('#searching_nav').slideUp('slow');
+          $('#searching_nav').slideUp('slow', function(){
+            //alert('true')
+            //$('#searching_nav').show('slide');
+          });
+        }else{
+          //alert('false')
+          $('#searching_nav').slideDown('slow', function(){
+            //alert('true')
+            //$('#main_nav').show('slide');
+            $(this).animate({
+              'margin-top':'25px'
+            }, 1000, function(){
+              //alert('terminé');
+            });
+          });
+        }
+      });
+      function scroller () {
+        // body...
+        //$('.scrollToTop, a').tooltip({ placement:'bottom' });
+        $(window).scroll(function(){
+          if ($(this).scrollTop() > 100) {
+            $('.scrollToTop').fadeIn();
+            //$('.cd-top').show('drop', 500)
+          } else {
+            $('.scrollToTop').fadeOut();
+            //$('#generer').hide('drop', 500)
+          }
+        });
+
+        //Click event to scroll to top
+        $('.scrollToTop').click(function(event){
+          event.preventDefault();
+          $('html, body').animate({scrollTop : 0},800);
+          return false;
+        });
+      }
+      scroller();
+    });
+    </script>
+  </body>
+</html>
