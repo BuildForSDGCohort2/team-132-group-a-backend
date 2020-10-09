@@ -1,5 +1,5 @@
 {
-  "name": "ToSala",
+  "name": "tosala",
   "version": "1.0.3",
   "description": "educational",
   "main": "server.js",
@@ -25,6 +25,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "david sibato, Henock Bongi, Guelord",
+  "author": "David Sibato",
   "license": "ISC"
 }
